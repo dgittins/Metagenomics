@@ -29,12 +29,13 @@ conda activate maxbin2
 ```
 
 <br/>
-2. Navigate to a working directory and create links to quality controlled reads and assembled contigs
+2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and depth files
 
 ```bash
 cd ./binning/maxbin2/
 ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
+ln -s ../mapping/*assembly.depth_bbmap.txt
 ```
 
 <br/>
