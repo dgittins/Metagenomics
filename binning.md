@@ -35,27 +35,7 @@ ln -s ../assembly/*/*final.contigs.fa .
 3. Run MaxBin 2.0 (without an abundance file)
 
 ```bash
-$ emacs maxbin2.bat
-```
-
-```bash
-#!/bin/bash
-###### Reserve computing resources ######
-#SBATCH --mail-user=<email.address>
-#SBATCH --mail-type=END,FAIL,INVALID_DEPEND,REQUEUE,STAGE_OUT
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --mem=50GB
-#SBATCH --cpus-per-task=10
-#SBATCH --time=05:00:00
-#SBATCH --partition=cpu2019,apophis-bf,pawson-bf,razi-bf
-
-###### Set environment variables ######
-echo "Starting run at : `date`"
-source /home/<user.name>/miniconda3/etc/profile.d/conda.sh
 conda activate maxbin2
-
-###### Run your script ######
 
 for f in ../*_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
@@ -63,13 +43,5 @@ run_MaxBin.pl -thread 40 -contig ../${new}_final.contigs.fa -reads ../${new}_pas
 done
 
 run_MaxBin.pl -thread 40 -contig ../coassembly_final.contigs.fa -reads_list ../reads_list -out coassembly >& coassembly.maxbin2.log.txt
-
-##
-echo "Job finished with exit code $? at: `date`"
-##
-```
-
-```bash
-$ sbatch maxbin2.bat
 ```
 
