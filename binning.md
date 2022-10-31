@@ -24,7 +24,7 @@ conda install -c conda-forge tar
 conda install -c bioconda maxbin2
 ```
 
-2. Navigate to working directory and create links to qc reads and assembled contigs
+2. Navigate to a working directory and create links to quality controlled reads and assembled contigs
 
 ```bash
 cd ./binning/maxbin2/
@@ -32,7 +32,7 @@ ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
 ```
 
-3. Run MaxBin 2.0 without and abundance file
+3. Run MaxBin 2.0 (without an abundance file)
 
 ```bash
 $ emacs maxbin2.bat
@@ -52,13 +52,13 @@ $ emacs maxbin2.bat
 
 ###### Set environment variables ######
 echo "Starting run at : `date`"
-source /home/user.name/miniconda3/etc/profile.d/conda.sh
+source /home/<user.name>/miniconda3/etc/profile.d/conda.sh
 conda activate maxbin2
 
 ###### Run your script ######
 
-for f in ../*_final.contigs.fa;
-do new=$(basename $f _final.contigs.fa);
+for f in ../*_final.contigs.fa
+do new=$(basename $f _final.contigs.fa)
 run_MaxBin.pl -thread 40 -contig ../${new}_final.contigs.fa -reads ../${new}_pass_1.qc.fastq -reads2 ../${new}_pass_2.qc.fastq -out ${new} >& ${new}.maxbin2.log.txt
 done
 
