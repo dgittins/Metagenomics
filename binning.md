@@ -55,6 +55,6 @@ do new=$(basename $f _final.contigs.fa)
 run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new} >& ${new}.maxbin2wdepth.log.txt
 done
 
-run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassembly >& Christman_coassembly.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassembly >& coassembly.maxbin2wdepth.log.txt
 ```
 
