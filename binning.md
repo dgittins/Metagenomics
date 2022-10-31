@@ -47,7 +47,7 @@ done
 run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
 ```
 
-3. Option 2 - run MaxBin 2.0 **with a contig abundance file**
+3. Option 2 - run MaxBin 2.0 **with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
 
 ```bash
 for f in *_final.contigs.fa
