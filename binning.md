@@ -29,13 +29,13 @@ conda activate maxbin2
 ```
 
 \
-2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and depth files
+2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) files
 
 ```bash
 cd ./binning/maxbin2/
 ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
-ln -s ../mapping/*assembly.depth_bbmap.txt .
+ln -s ../mapping/*assembly.depth.txt .
 ```
 
 \
@@ -58,7 +58,7 @@ Convert [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkel
 Use [depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/depthabundance.py) script to parse each coverage depth file:
 
 ```bash
-depthabundance.py assembly.depth_bbmap.txt
+depthabundance.py assembly.depth.txt
 ```
 
 Create a list of output abundance files for each assembly:
