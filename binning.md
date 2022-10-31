@@ -49,6 +49,12 @@ run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_l
 
 3. Option 2 - run MaxBin 2.0 **with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
 
+Convert [MetaBAT](https://bitbucket.org/berkeleylab/metabat/src/master/) jgi_summarize_bam_contig_depths file used for calculating coverage depth for each sequence in an assembly to an abundance file that can be inputted to MaxBin 2.0
+
+```bash
+[depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/depthabundance.py) assembly.depth_bbmap.txt
+```
+
 ```bash
 for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
