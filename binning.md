@@ -32,7 +32,7 @@ ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
 ```
 
-3. Run MaxBin 2.0 (without an abundance file)
+3. Run MaxBin 2.0 (without a contig abundance file - MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate the abundance information)
 
 ```bash
 conda activate maxbin2
