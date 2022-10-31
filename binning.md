@@ -36,7 +36,7 @@ ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
 ```
 
-<br/><br/>
+<br/>
 3. Option 1 - run MaxBin 2.0 **without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 ```bash
@@ -48,7 +48,7 @@ done
 run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
 ```
 
-<br/><br/>
+<br/>
 3. Option 2 - run MaxBin 2.0 **with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
 
 Convert [MetaBAT](https://bitbucket.org/berkeleylab/metabat/src/master/) jgi_summarize_bam_contig_depths file used for calculating coverage depth for each sequence in an assembly to an abundance file that can be inputted to MaxBin 2.0
