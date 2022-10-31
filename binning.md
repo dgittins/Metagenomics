@@ -24,6 +24,10 @@ conda install -c conda-forge tar
 conda install -c bioconda maxbin2
 ```
 
+```bash
+conda activate maxbin2
+```
+
 2. Navigate to a working directory and create links to quality controlled reads and assembled contigs
 
 ```bash
@@ -32,16 +36,25 @@ ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
 ```
 
-3. Run MaxBin 2.0 (without a contig abundance file - MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate the abundance information)
+3a. Run MaxBin 2.0 (without a contig abundance file - MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 ```bash
-conda activate maxbin2
-
-for f in ../*_final.contigs.fa
+for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 40 -contig ../${new}_final.contigs.fa -reads ../${new}_pass_1.qc.fastq -reads2 ../${new}_pass_2.qc.fastq -out ${new} >& ${new}.maxbin2.log.txt
+run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -reads ${new}_pass_1.qc.fastq -reads2 ${new}_pass_2.qc.fastq -out ${new} >& ${new}.maxbin2.log.txt
 done
 
-run_MaxBin.pl -thread 40 -contig ../coassembly_final.contigs.fa -reads_list ../reads_list -out coassembly >& coassembly.maxbin2.log.txt
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
+```
+
+3b. Run MaxBin 2.0 (with an abundance file)
+
+```bash
+for f in *_final.contigs.fa
+do new=$(basename $f _final.contigs.fa)
+run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new} >& ${new}.maxbin2wdepth.log.txt
+done
+
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassembly >& Christman_coassembly.maxbin2wdepth.log.txt
 ```
 
