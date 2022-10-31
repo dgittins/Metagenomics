@@ -64,9 +64,9 @@ depthabundance.py assembly.depth_bbmap.txt
 Create a list of output files:
 
 ```bash
-ls *1assembly.bbmap* >> 1assembly.abund_list.txt
-ls *2assembly.bbmap* >> 2assembly.abund_list.txt
-ls *3assembly.bbmap* >> 3assembly.abund_list.txt
+ls *sample1assembly.bbmap* >> sample1assembly.abund_list.txt
+ls *sample2assembly.bbmap* >> sample2assembly.abund_list.txt
+ls *sample3assembly.bbmap* >> sample3assembly.abund_list.txt
 ls *coassembly.bbmap* >> coassembly.abund_list.txt
 ```
 
