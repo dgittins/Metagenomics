@@ -28,6 +28,7 @@ conda install -c bioconda maxbin2
 conda activate maxbin2
 ```
 
+<br/>
 2. Navigate to a working directory and create links to quality controlled reads and assembled contigs
 
 ```bash
