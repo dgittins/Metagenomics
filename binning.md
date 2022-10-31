@@ -36,7 +36,7 @@ ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
 ```
 
-3a. Run MaxBin 2.0 (without a contig abundance file - MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
+3a. Run MaxBin 2.0 (**without a contig abundance file** - MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 ```bash
 for f in *_final.contigs.fa
@@ -47,14 +47,14 @@ done
 run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
 ```
 
-3b. Run MaxBin 2.0 (with a contig abundance file)
+3b. Run MaxBin 2.0 (**with a contig abundance file**)
 
 ```bash
 for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new} >& ${new}.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new}wdepth >& ${new}.maxbin2wdepth.log.txt
 done
 
-run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassembly >& coassembly.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassemblywdepth >& coassembly.maxbin2wdepth.log.txt
 ```
 
