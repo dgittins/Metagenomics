@@ -35,7 +35,7 @@ conda activate maxbin2
 cd ./binning/maxbin2/
 ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
-ln -s ../mapping/*assembly.depth_bbmap.txt
+ln -s ../mapping/*assembly.depth_bbmap.txt .
 ```
 
 <br/>
