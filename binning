@@ -1,1 +1,75 @@
+# Recovery of genomes from metagenomic datasets
+
+## [MaxBin 2.0](https://academic.oup.com/bioinformatics/article/32/4/605/1744462?login=true)
+
+1. Install MaxBin 2.0
+
+```bash
+$ conda create -n maxbin2
+$ conda activate maxbin2
+```
+
+Install dependencies one-by-one (full install using conda, e.g., conda install -c bioconda maxbin2, did not work - problem solving the environment. Using .yml file (https://github.com/bioconda/bioconda-recipes/blob/master/recipes/maxbin2/meta.yaml) didn't work either, but provided a list of dependencies to download)
+
+```bash
+conda install -c bioconda fraggenescan
+conda install -c bioconda bowtie2
+conda install -c bioconda hmmer
+conda install -c bioconda idba
+conda install -c conda-forge perl=5.26
+conda install -c bioconda perl-lwp-simple
+conda install -c conda-forge r-base
+conda install -c bioconda r-gplots
+conda install -c conda-forge tar
+conda install -c bioconda maxbin2
+```
+
+2. Navigate to working directory and create links to qc reads and assembled contigs
+
+```bash
+cd ./binning/maxbin2/
+ln -s ../qc/*.qc.fastq .
+ln -s ../assembly/*/*final.contigs.fa .
+```
+
+3. Run MaxBin 2.0 without and abundance file
+
+```bash
+$ emacs maxbin2.bat
+```
+
+```bash
+#!/bin/bash
+###### Reserve computing resources ######
+#SBATCH --mail-user=<email.address>
+#SBATCH --mail-type=END,FAIL,INVALID_DEPEND,REQUEUE,STAGE_OUT
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=50GB
+#SBATCH --cpus-per-task=10
+#SBATCH --time=05:00:00
+#SBATCH --partition=cpu2019,apophis-bf,pawson-bf,razi-bf
+
+###### Set environment variables ######
+echo "Starting run at : `date`"
+source /home/user.name/miniconda3/etc/profile.d/conda.sh
+conda activate maxbin2
+
+###### Run your script ######
+
+for f in ../*_final.contigs.fa;
+do new=$(basename $f _final.contigs.fa);
+run_MaxBin.pl -thread 40 -contig ../${new}_final.contigs.fa -reads ../${new}_pass_1.qc.fastq -reads2 ../${new}_pass_2.qc.fastq -out ${new} >& ${new}.maxbin2.log.txt
+done
+
+run_MaxBin.pl -thread 40 -contig ../coassembly_final.contigs.fa -reads_list ../reads_list -out coassembly >& coassembly.maxbin2.log.txt
+
+##
+echo "Job finished with exit code $? at: `date`"
+##
+```
+
+```bash
+$ sbatch maxbin2.bat
+```
 
