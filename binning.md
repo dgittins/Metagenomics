@@ -28,7 +28,7 @@ conda install -c bioconda maxbin2
 conda activate maxbin2
 ```
 
-<br/>
+<br>
 2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and depth files
 
 ```bash
@@ -38,7 +38,7 @@ ln -s ../assembly/*/*final.contigs.fa .
 ln -s ../mapping/*assembly.depth_bbmap.txt .
 ```
 
-<br/>
+<br>
 3. Option 1 - run MaxBin 2.0 **without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 ```bash
@@ -53,7 +53,7 @@ run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_l
 
 3. Option 2 - run MaxBin 2.0 **with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
 
-<br/>
+<br>
 Convert [MetaBAT](https://bitbucket.org/berkeleylab/metabat/src/master/) jgi_summarize_bam_contig_depths file used for calculating coverage depth for each sequence in an assembly to an abundance file that can be inputted to MaxBin 2.0
 
 Use [depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/depthabundance.py) script to 
