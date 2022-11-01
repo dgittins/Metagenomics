@@ -24,10 +24,6 @@ conda install -c conda-forge tar
 conda install -c bioconda maxbin2
 ```
 
-```bash
-conda activate maxbin2
-```
-
 \
 2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) files
 
