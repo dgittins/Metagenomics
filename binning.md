@@ -65,10 +65,10 @@ done
 Create a list of output abundance files for each assembly:
 
 ```bash
-ls *coassembly.abund.txt* >> coassembly.abund_list.txt
-ls *sample1assembly.abund.txt* >> sample1assembly.abund_list.txt
-ls *sample2assembly.abund.txt* >> sample2assembly.abund_list.txt
-ls *sample3assembly.abund.txt* >> sample3assembly.abund_list.txt
+ls *coassembly.bbmap_sorted.bam.txt* >> coassembly.abund_list.txt
+ls *sample1assembly.bbmap_sorted.bam.txt* >> sample1assembly.abund_list.txt
+ls *sample2assembly.bbmap_sorted.bam.txt* >> sample2assembly.abund_list.txt
+ls *sample3assembly.bbmap_sorted.bam.txt* >> sample3assembly.abund_list.txt
 ```
 
 ```bash
