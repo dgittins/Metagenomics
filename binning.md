@@ -38,12 +38,12 @@ ln -s ../mapping/*assembly.depth.txt . #optional - see below
 3. Option 1 - run MaxBin 2.0 **without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 ```bash
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
+
 for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
 run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -reads ${new}_pass_1.qc.fastq -reads2 ${new}_pass_2.qc.fastq -out ${new} >& ${new}.maxbin2.log.txt
 done
-
-run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -reads_list reads_list -out coassembly >& coassembly.maxbin2.log.txt
 ```
 
 \
@@ -54,24 +54,29 @@ Convert [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkel
 Use [depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/depthabundance.py) script to parse each coverage depth file:
 
 ```bash
-depthabundance.py assembly.depth.txt
+depthabundance.py coassembly.depth.txt
+
+for f in *.depth.txt
+do new=$(basename $f .depth.txt)
+python depthabundance.py ${new}.depth.txt
+done
 ```
 
 Create a list of output abundance files for each assembly:
 
 ```bash
+ls *coassembly.abund.txt* >> coassembly.abund_list.txt
 ls *sample1assembly.abund.txt* >> sample1assembly.abund_list.txt
 ls *sample2assembly.abund.txt* >> sample2assembly.abund_list.txt
 ls *sample3assembly.abund.txt* >> sample3assembly.abund_list.txt
-ls *coassembly.abund.txt* >> coassembly.abund_list.txt
 ```
 
 ```bash
+run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassemblywdepth >& coassembly.maxbin2wdepth.log.txt
+
 for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
 run_MaxBin.pl -thread 40 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new}wdepth >& ${new}.maxbin2wdepth.log.txt
 done
-
-run_MaxBin.pl -thread 40 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassemblywdepth >& coassembly.maxbin2wdepth.log.txt
 ```
 
