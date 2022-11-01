@@ -31,7 +31,7 @@ conda install -c bioconda maxbin2
 cd ./binning/maxbin2/
 ln -s ../qc/*.qc.fastq .
 ln -s ../assembly/*/*final.contigs.fa .
-ln -s ../mapping/*assembly.depth.txt .
+ln -s ../mapping/*assembly.depth.txt . #optional - see below
 ```
 
 \
