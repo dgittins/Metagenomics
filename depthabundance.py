@@ -28,4 +28,4 @@ for column in df.columns:
         result = pd.concat(combined,axis=1,join='inner')
 
         #Write to a csv that is titled after the column
-        result.to_csv(column+'.txt',sep='\t', index=False)
+        result.to_csv(column+'.txt',sep='\t', header=None, index=False)
