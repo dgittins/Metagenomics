@@ -13,7 +13,7 @@ $ conda activate sratools
 $ vdb-config --prefetch-to-cwd
 ```
 
-2. **Option 2** - Configure toolkit to download to a user reporitory
+2. **Option 2** - Configure toolkit to download to a user repository
 
 Create a repository for downloaded sequences (run the command below and operate the buttons in the output screen by pressing the letter highlighted in red - navigate to the 'Cache' then the 'location of user-repository:' and create a repository for download sequences, e.g., '/home/user.name/sradownloads'
 
