@@ -90,6 +90,14 @@ $ ls -d "$PWD"/*sample2assembly.bbmap* >> sample2_abundance.list
 $ ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
 ```
 
+```bash
+$ less sample1_abundance.list
+
+/home/username/binning/sample1_sample1assembly.sorted.bam.txt
+/home/username/binning/sample2_sample1assembly.sorted.bam.txt
+/home/username/binning/sample3_sample1assembly.sorted.bam.txt
+``
+
 Run MaxBin command:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
