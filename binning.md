@@ -5,8 +5,8 @@
 1. Install MaxBin 2.0
 
 ```bash
-$ conda create -n maxbin2
-$ conda activate maxbin2
+conda create -n maxbin2
+conda activate maxbin2
 ```
 
 Install dependencies one-by-one (full install using conda, e.g., conda install -c bioconda maxbin2, did not work - problem solving the environment. Using an environment .yml file (https://github.com/bioconda/bioconda-recipes/blob/master/recipes/maxbin2/meta.yaml) didn't work either, but provided a list of dependencies to download)
@@ -47,8 +47,8 @@ Run MaxBin command:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
 
-for f in *_final.contigs.fa;
-do new=$(basename $f _final.contigs.fa);
+for f in *_final.contigs.fa
+do new=$(basename $f _final.contigs.fa)
 run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -reads_list reads.list -out ${new} >& ${new}.maxbin2.log.txt
 done
 ```
