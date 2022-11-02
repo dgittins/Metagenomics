@@ -34,7 +34,7 @@ SRR13515398
 4. Use the 'prefetch' tool to download files
 
 ```bash
-$ prefetch --option-file ../SraAccList.txt
+$ prefetch --option-file SraAccList.txt
 ```
 
 5. Use the 'fasterq-dump' tool to extract fastq files
