@@ -7,7 +7,6 @@ $ conda create -n sratools -c bioconda sra-tools
 $ conda activate sratools
 ```
 
-\
 2. **Option 1** - Configure toolkit to download to the current working directory
 
 ```bash
@@ -22,7 +21,6 @@ Create a repository for downloaded sequences (run the command below and operate 
 $ vdb-config -i
 ```
 
-\
 3. Create a sequence accession list file that contains the SRR accession numbers of the target sequences
 
 ```bash
@@ -33,14 +31,12 @@ SRR13515397
 SRR13515398	
 ```
 
-\
 4. Use the 'prefetch' tool to download files
 
 ```bash
 $ prefetch --option-file ../SraAccList.txt
 ```
 
-\
 5. Use the 'fasterq-dump' tool to extract fastq files
 
 ```bash
