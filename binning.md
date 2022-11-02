@@ -54,7 +54,7 @@ done
 ```
 
 \
-3. **Option 2 - run MaxBin 2.0 with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
+3. **Option 2 - run MaxBin 2.0 with contig abundance files** (runs faster and with less resources if an abundance list file is provided)
 
 Convert [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) file used for calculating coverage depth for each sequence in an assembly to an abundance file that can be inputted to MaxBin 2.0
 
@@ -69,7 +69,7 @@ python depthabundance.py ${new}.depth.txt
 done
 ```
 
-Create an 'abundance.list' file conataining list of the abundance files for each assembly with their absolute paths:
+Create 'abundance.list' files conataining lists of the abundance files for each assembly with their absolute paths:
 
 ```bash
 ls -d "$PWD"/*coassembly.bbmap* >> coassembly_abundance.list
