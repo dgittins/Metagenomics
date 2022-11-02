@@ -42,4 +42,5 @@ $ prefetch --option-file SraAccList.txt
 ```bash
 $ mkdir fastq
 $ fasterq-dump --outdir ./fastq --threads 20 *.sra
+$ gzip ./*.fastq #compress fastq files
 ```
