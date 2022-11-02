@@ -96,7 +96,8 @@ $ less sample1_abundance.list
 /home/username/binning/sample1_sample1assembly.sorted.bam.txt
 /home/username/binning/sample2_sample1assembly.sorted.bam.txt
 /home/username/binning/sample3_sample1assembly.sorted.bam.txt
-``
+...
+```
 
 Run MaxBin command:
 ```bash
