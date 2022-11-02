@@ -5,33 +5,33 @@
 1. Install MaxBin 2.0
 
 ```bash
-conda create -n maxbin2
-conda activate maxbin2
+$ conda create -n maxbin2
+$ conda activate maxbin2
 ```
 
 Install dependencies one-by-one (full install using conda, e.g., conda install -c bioconda maxbin2, did not work - problem solving the environment. Using an environment .yml file (https://github.com/bioconda/bioconda-recipes/blob/master/recipes/maxbin2/meta.yaml) didn't work either, but provided a list of dependencies to download)
 
 ```bash
-conda install -c bioconda fraggenescan
-conda install -c bioconda bowtie2
-conda install -c bioconda hmmer
-conda install -c bioconda idba
-conda install -c conda-forge perl=5.26
-conda install -c bioconda perl-lwp-simple
-conda install -c conda-forge r-base
-conda install -c bioconda r-gplots
-conda install -c conda-forge tar
-conda install -c bioconda maxbin2
+$ conda install -c bioconda fraggenescan
+$ conda install -c bioconda bowtie2
+$ conda install -c bioconda hmmer
+$ conda install -c bioconda idba
+$ conda install -c conda-forge perl=5.26
+$ conda install -c bioconda perl-lwp-simple
+$ conda install -c conda-forge r-base
+$ conda install -c bioconda r-gplots
+$ conda install -c conda-forge tar
+$ conda install -c bioconda maxbin2
 ```
 
 \
 2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) files
 
 ```bash
-cd ./binning/maxbin2/
-ln -s ../assembly/*/*final.contigs.fa .
-ln -s ../qc/*.qc.fastq . #optional - see below
-ln -s ../mapping/*assembly.depth.txt . #optional - see below
+$ cd ./binning/maxbin2/
+$ ln -s ../assembly/*/*final.contigs.fa .
+$ ln -s ../qc/*.qc.fastq . #optional - see below
+$ ln -s ../mapping/*assembly.depth.txt . #optional - see below
 ```
 
 \
@@ -40,7 +40,7 @@ ln -s ../mapping/*assembly.depth.txt . #optional - see below
 Create a 'reads.list' file containing a list of all the QC fastq read files with their absolute paths:
 
 ```bash
-ls -d "$PWD"/*.qc.fastq >> reads.list
+$ ls -d "$PWD"/*.qc.fastq >> reads.list
 ```
 
 Run MaxBin command:
@@ -72,10 +72,10 @@ done
 Create 'abundance.list' files conataining lists of the abundance files for each assembly with their absolute paths:
 
 ```bash
-ls -d "$PWD"/*coassembly.bbmap* >> coassembly_abundance.list
-ls -d "$PWD"/*sample1assembly.bbmap* >> sample1_abundance.list
-ls -d "$PWD"/*sample2assembly.bbmap* >> sample2_abundance.list
-ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
+$ ls -d "$PWD"/*coassembly.bbmap* >> coassembly_abundance.list
+$ ls -d "$PWD"/*sample1assembly.bbmap* >> sample1_abundance.list
+$ ls -d "$PWD"/*sample2assembly.bbmap* >> sample2_abundance.list
+$ ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
 ```
 
 Run MaxBin command:
