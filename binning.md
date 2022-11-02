@@ -45,13 +45,12 @@ ls -d "$PWD"/*.qc.fastq >> reads.list
 
 Run MaxBin command:
 ```bash
+run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
+
 for f in *_final.contigs.fa;
 do new=$(basename $f _final.contigs.fa);
 run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -reads_list reads.list -out ${new} >& ${new}.maxbin2.log.txt
 done
-
-run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
-
 ```
 
 \
@@ -73,16 +72,19 @@ done
 Create an 'abundance.list' file conataining list of the abundance files for each assembly with their absolute paths:
 
 ```bash
-ls -d "$PWD"/*assembly.bbmap* >> abundance.list
+ls -d "$PWD"/*coassembly.bbmap* >> coassembly_abundance.list
+ls -d "$PWD"/*sample1assembly.bbmap* >> sample1_abundance.list
+ls -d "$PWD"/*sample2assembly.bbmap* >> sample2_abundance.list
+ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
 ```
 
 Run MaxBin command:
 ```bash
+run_MaxBin.pl -thread 20 -contig ../../coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
+
 for f in ../*_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 20 -contig ../../${new}_final.contigs.fa -abund_list abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 20 -contig ../../${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
 done
-
-run_MaxBin.pl -thread 20 -contig ../../coassembly_final.contigs.fa -abund_list abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 ```
 
