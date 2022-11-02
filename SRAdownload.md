@@ -37,7 +37,7 @@ SRR13515398
 $ prefetch --option-file SraAccList.txt
 ```
 
-5. Use the 'fasterq-dump' tool to extract fastq files
+5. Use the 'fastq-dump' tool to extract fastq files
 
 ```bash
 $ mkdir fastq
