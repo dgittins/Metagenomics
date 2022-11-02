@@ -80,11 +80,11 @@ ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
 
 Run MaxBin command:
 ```bash
-run_MaxBin.pl -thread 20 -contig ../../coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 
-for f in ../*_final.contigs.fa
+for f in *_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 20 -contig ../../${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
 done
 ```
 
