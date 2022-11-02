@@ -44,7 +44,7 @@ $ mkdir fastq
 $ fasterq-dump --outdir ./fastq --threads 20 *.sra
 ```
 
-6. Clean up files
+Optional commands to reduce stored data volume
 
 ```bash
 $ gzip ./*.fastq #compress fastq files
