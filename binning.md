@@ -43,6 +43,18 @@ Create a 'reads.list' file containing a list of all the QC fastq read files with
 $ ls -d "$PWD"/*.qc.fastq >> reads.list
 ```
 
+```bash
+$ less reads.list
+
+/home/username/binning/sample1_pass_1.qc.fastq
+/home/username/binning/sample1_pass_2.qc.fastq
+/home/username/binning/sample2_pass_1.qc.fastq
+/home/username/binning/sample2_pass_2.qc.fastq
+/home/username/binning/sample3_pass_1.qc.fastq
+/home/username/binning/sample3_pass_2.qc.fastq
+...
+```
+
 Run MaxBin command:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
