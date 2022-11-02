@@ -37,12 +37,13 @@ ln -s ../mapping/*assembly.depth.txt . #optional - see below
 \
 3. Option 1 - run MaxBin 2.0 **without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
-Create a 'reads.list' file containing a list of all the QC fastq read files with their absolute path
+Create a 'reads.list' file containing a list of all the QC fastq read files with their absolute paths:
 
 ```bash
 ls -d "$PWD"/*.qc.fastq >> reads.list
 ```
 
+Run MaxBin command:
 ```bash
 for f in *_final.contigs.fa;
 do new=$(basename $f _final.contigs.fa);
@@ -78,6 +79,7 @@ ls *sample2assembly.sorted.bam.txt* >> sample2assembly.abund_list.txt
 ls *sample3assembly.sorted.bam.txt* >> sample3assembly.abund_list.txt
 ```
 
+Run MaxBin command:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassemblywdepth >& coassembly.maxbin2wdepth.log.txt
 
