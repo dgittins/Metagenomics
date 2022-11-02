@@ -35,7 +35,7 @@ ln -s ../mapping/*assembly.depth.txt . #optional - see below
 ```
 
 \
-3. Option 1 - run MaxBin 2.0 **without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
+3. **Option 1 - run MaxBin 2.0 without a contig abundance file** (MaxBin will use Bowtie2 to map the sequencing reads against contigs and generate abundance information)
 
 Create a 'reads.list' file containing a list of all the QC fastq read files with their absolute paths:
 
@@ -55,7 +55,7 @@ run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.l
 ```
 
 \
-3. Option 2 - run MaxBin 2.0 **with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
+3. **Option 2 - run MaxBin 2.0 with a contig abundance file** (runs faster and with less resources if an abundance list file is provided)
 
 Convert [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) file used for calculating coverage depth for each sequence in an assembly to an abundance file that can be inputted to MaxBin 2.0
 
