@@ -7,7 +7,7 @@ $ conda create -n sratools -c bioconda sra-tools
 $ conda activate sratools
 ```
 
-\
+
 2. **Option 1** - Configure toolkit to download to the current working directory
 
 ```bash
