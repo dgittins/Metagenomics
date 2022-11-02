@@ -70,22 +70,19 @@ python depthabundance.py ${new}.depth.txt
 done
 ```
 
-Create a list of output abundance files for each assembly:
+Create an 'abundance.list' file conataining list of the abundance files for each assembly with their absolute paths:
 
 ```bash
-ls *coassembly.sorted.bam.txt* >> coassembly.abund_list.txt
-ls *sample1assembly.sorted.bam.txt* >> sample1assembly.abund_list.txt
-ls *sample2assembly.sorted.bam.txt* >> sample2assembly.abund_list.txt
-ls *sample3assembly.sorted.bam.txt* >> sample3assembly.abund_list.txt
+ls -d "$PWD"/*assembly.bbmap* >> abundance.list
 ```
 
 Run MaxBin command:
 ```bash
-run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly.abund_list.txt -out coassemblywdepth >& coassembly.maxbin2wdepth.log.txt
-
-for f in *_final.contigs.fa
+for f in ../*_final.contigs.fa
 do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -abund_list ${new}assembly.abund_list.txt -out ${new}wdepth >& ${new}.maxbin2wdepth.log.txt
+run_MaxBin.pl -thread 20 -contig ../../${new}_final.contigs.fa -abund_list abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
 done
+
+run_MaxBin.pl -thread 20 -contig ../../coassembly_final.contigs.fa -abund_list abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 ```
 
