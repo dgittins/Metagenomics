@@ -41,7 +41,7 @@ $ prefetch --option-file SraAccList.txt
 
 ```bash
 $ mkdir fastq
-$ fasterq-dump --outdir ./fastq --threads 20 *.sra
+$ fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip *.sra
 ```
 
 Commands to reduce stored data volume
