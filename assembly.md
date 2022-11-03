@@ -29,6 +29,7 @@ done
 megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq,sample2_pass_2.qc.fastq,sample3_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
 ```
 
+\
 4. Add a prefix of the sample name to the final.contigs.fa file and each assembled contig within the file
 
 ```bash
