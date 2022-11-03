@@ -37,11 +37,12 @@ SRR13515398
 $ prefetch --option-file SraAccList.txt
 ```
 
-5. Use the 'fastq-dump' tool to extract fastq files
+5. Use the 'fastq-dump' or 'fasterq-dump' tool to extract fastq files
 
 ```bash
 $ mkdir fastq
-$ fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip *.sra
+$ fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip *.sra #command can be run on multiple .sra files
+$ fasterq-dump --outdir ./fastq --threads 20 fasterq-dump --outdir ./fastq --threads 20 *.sra #command can be multithreaded, but not run on multiple sra files
 ```
 
 Commands to reduce stored data volume
