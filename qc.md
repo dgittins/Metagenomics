@@ -46,7 +46,7 @@ As a single command:
 
 ```bash
 for f in *_pass_1.fastq.gz
-  do 
+do 
   sample=$(basename $f _pass_1.fastq.gz)
 
   bbduk.sh -Xmx10g in=${sample}_pass_1.fastq.gz in2=${sample}_pass_2.fastq.gz out=${sample}_pass_1.lastbase.fastq out2=${sample}_pass_2.lastbase.fastq ftm=5 threads=40 >& ${sample}.lastbase.log.txt
@@ -57,5 +57,5 @@ for f in *_pass_1.fastq.gz
 
   bbduk.sh -Xmx10g in=${sample}_pass_1.phix.fastq in2=${sample}_pass_2.phix.fastq out=${sample}_pass_1.qc.fastq out2=${sample}_pass_2.qc.fastq qtrim=rl trimq=15 minlength=30 threads=40 >& ${sample}.quality.log.txt
 
-  done
+done
   ```
