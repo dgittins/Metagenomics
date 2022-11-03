@@ -28,3 +28,14 @@ done
 
 megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq,sample2_pass_2.qc.fastq,sample3_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
 ```
+
+4. Add a prefix of the sample name to the final.contigs.fa file and each assembled contig within the file
+
+```bash
+$ cd sample1_megahit_assembly
+
+$ sample=$(basename "$PWD" _megahit_assembly) #create a variable of the sample name from the directory name
+$ mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
+$ sed -i "s/>/>${sample}/g" ${sample}_final.contigs.fa #add sample name to each contig
+```
+
