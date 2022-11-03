@@ -61,8 +61,8 @@ run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.l
 
 for f in *_final.contigs.fa
 do 
-  new=$(basename $f _final.contigs.fa)
-  run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -reads_list reads.list -out ${new} >& ${new}.maxbin2.log.txt
+  sample=$(basename $f _final.contigs.fa)
+  run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -reads_list reads.list -out ${sample} >& ${sample}.maxbin2.log.txt
 done
 ```
 
@@ -78,8 +78,8 @@ depthabundance.py coassembly.depth.txt
 
 for f in *.depth.txt
 do 
-  new=$(basename $f .depth.txt)
-  python depthabundance.py ${new}.depth.txt
+  sample=$(basename $f .depth.txt)
+  python depthabundance.py ${sample}.depth.txt
 done
 ```
 
@@ -107,8 +107,8 @@ run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassem
 
 for f in *_final.contigs.fa
 do 
-  new=$(basename $f _final.contigs.fa)
-  run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
+  sample=$(basename $f _final.contigs.fa)
+  run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -abund_list ${sample}_abundance.list -out ${sample} >& ${sample}.maxbin2wdepth.log.txt
 done
 ```
 
