@@ -41,3 +41,21 @@ $ bbduk.sh -Xmx10g in=sample1_pass_1.adapter.fastq in2=sample1_pass_2.adapter.fa
 ```bash
 $ bbduk.sh -Xmx10g in=sample1_pass_1.phix.fastq in2=sample1_pass_2.phix.fastq out=sample1_pass_1.qc.fastq out2=sample1_pass_2.qc.fastq qtrim=rl trimq=15 minlength=30 threads=20 >& sample1.quality.log.txt
 ```
+
+As a single command:
+
+```bash
+for f in *_pass_1.fastq.gz
+  do 
+  sample=$(basename $f _pass_1.fastq.gz)
+
+  bbduk.sh -Xmx10g in=${sample}_pass_1.fastq.gz in2=${sample}_pass_2.fastq.gz out=${sample}_pass_1.lastbase.fastq out2=${sample}_pass_2.lastbase.fastq ftm=5 threads=40 >& ${sample}.lastbase.log.txt
+
+  bbduk.sh -Xmx10g in=${sample}_pass_1.lastbase.fastq in2=${sample}_pass_2.lastbase.fastq out=${sample}_pass_1.adapter.fastq out2=${sample}_pass_2.adapter.fastq ref=/bbmap-39.01-0/resources/adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo threads=40 >& ${sample}.adapter.log.txt
+
+  bbduk.sh -Xmx10g in=${sample}_pass_1.adapter.fastq in2=${sample}_pass_2.adapter.fastq out=${sample}_pass_1.phix.fastq out2=${sample}_pass_2.phix.fastq ref=/bbmap-39.01-0/resources/phix_adapters.fa.gz k=31 hdist=1 stats=${sample}_stats.txt threads=40 >& ${sample}.phix.log.txt
+
+  bbduk.sh -Xmx10g in=${sample}_pass_1.phix.fastq in2=${sample}_pass_2.phix.fastq out=${sample}_pass_1.qc.fastq out2=${sample}_pass_2.qc.fastq qtrim=rl trimq=15 minlength=30 threads=40 >& ${sample}.quality.log.txt
+
+  done
+  ```
