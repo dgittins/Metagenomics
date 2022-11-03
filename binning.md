@@ -60,8 +60,9 @@ Run MaxBin command:
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
 
 for f in *_final.contigs.fa
-do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -reads_list reads.list -out ${new} >& ${new}.maxbin2.log.txt
+do 
+  new=$(basename $f _final.contigs.fa)
+  run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -reads_list reads.list -out ${new} >& ${new}.maxbin2.log.txt
 done
 ```
 
@@ -76,8 +77,9 @@ Use [depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/bin/d
 depthabundance.py coassembly.depth.txt
 
 for f in *.depth.txt
-do new=$(basename $f .depth.txt)
-python depthabundance.py ${new}.depth.txt
+do 
+  new=$(basename $f .depth.txt)
+  python depthabundance.py ${new}.depth.txt
 done
 ```
 
@@ -104,8 +106,9 @@ Run MaxBin command:
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 
 for f in *_final.contigs.fa
-do new=$(basename $f _final.contigs.fa)
-run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
+do 
+  new=$(basename $f _final.contigs.fa)
+  run_MaxBin.pl -thread 20 -contig ${new}_final.contigs.fa -abund_list ${new}_abundance.list -out ${new} >& ${new}.maxbin2wdepth.log.txt
 done
 ```
 
