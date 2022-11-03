@@ -85,8 +85,8 @@ $ conda activate fastqc
 Run FastQC on the quality controlled reads
 
 ```bash
-for file in *.qc.fastq
+for f in *.qc.fastq
 do 
-  fastqc -t 20 -f fastq -o fastqc $file
+  fastqc $f -t 20 -f fastq -o fastqc
 done
 ```
