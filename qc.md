@@ -72,3 +72,21 @@ $ rm *.adapter.fastq
 $ rm *.phix.fastq
 ```
 
+\
+5. Assess quality using [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+
+5a. Install FastQC
+
+```bash
+$ conda create -n fastqcs -c bioconda fastqc
+$ conda activate fastqc
+```
+
+5. Run FastQC on the quality controlled reads
+
+```bash
+for file in *.qc.fastq
+do 
+  fastqc -t 20 -f fastq -o fastqc $file
+done
+```
