@@ -87,6 +87,6 @@ Run FastQC on the quality controlled reads
 ```bash
 for f in *.qc.fastq
 do 
-  fastqc $f -t 20 -f fastq -o fastqc
+  fastqc $f -t 20 -f fastq -o .
 done
 ```
