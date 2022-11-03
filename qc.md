@@ -42,7 +42,8 @@ $ bbduk.sh -Xmx10g in=sample1_pass_1.adapter.fastq in2=sample1_pass_2.adapter.fa
 $ bbduk.sh -Xmx10g in=sample1_pass_1.phix.fastq in2=sample1_pass_2.phix.fastq out=sample1_pass_1.qc.fastq out2=sample1_pass_2.qc.fastq qtrim=rl trimq=15 minlength=30 threads=20 >& sample1.quality.log.txt
 ```
 
-As a single command:
+\
+As a for loop:
 
 ```bash
 for f in *_pass_1.fastq.gz
