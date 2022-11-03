@@ -30,7 +30,7 @@ megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fas
 ```
 
 \
-4. Add a prefix of the sample name to the 'final.contigs.fa' file from the previous command and each assembled contig within the file
+4. Add a prefix of the sample name to each of the 'final.contigs.fa' files from the previous command and each assembled contig within the respective files. Repeat the commands below for each assembly. 
 
 ```bash
 $ cd sample1_megahit_assembly
