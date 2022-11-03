@@ -55,7 +55,7 @@ $ less reads.list
 ...
 ```
 
-Run MaxBin command:
+Run MaxBin:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
 
@@ -101,7 +101,7 @@ $ less sample1_abundance.list
 ...
 ```
 
-Run MaxBin command:
+Run MaxBin:
 ```bash
 run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 
