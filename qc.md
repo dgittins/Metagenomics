@@ -64,11 +64,11 @@ done
 ```
 
 \
-  4. Remove intermediate files
+  4. Remove intermediate files to save storage space
 
 ```bash
-rm *.lastbase.fastq
-rm *.adapter.fastq
-rm *.phix.fastq
+$ rm *.lastbase.fastq
+$ rm *.adapter.fastq
+$ rm *.phix.fastq
 ```
 
