@@ -16,6 +16,7 @@ $ cd assembly/megahit/
 $ ln -s ../../qc/*.qc.fastq .
 ```
 
+\
 3. Run MEGAHIT
 
 ```bash
