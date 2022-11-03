@@ -11,3 +11,21 @@ $ conda create -n bbtools -c bioconda bbmap
 $ conda activate bbtools
 ```
 
+\
+2. Navigate to a working directory and create links to QC fastq files, assemblies and coassemblies
+
+```bash
+$ cd mapping/
+$ ln -s ../qc/*.qc.fastq .
+$ ln -s ../assembly/*/*_final.contigs.fa .
+```
+
+3. Run BBMap
+
+```bash
+for f in *_pass_1.qc.fastq
+do
+  sample=$(basename $f _pass_1.qc.fastq)
+  bbmap.sh -Xmx10g ref=SRR1375011_final.contigs.fa nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.9
+  covstats=${sample}_SRR1375011assembly.bbmap_covstats.txt scafstats=${sample}_SRR1375011assembly.bbmap_scafstats.txt statsfile=${sample}_SRR1375011assembly.bbmap_stats.txt threads=20 out=${sample}_SRR1375011assembly.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_SRR1375011assembly.bbmap.log.txt
+done
