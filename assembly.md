@@ -42,6 +42,7 @@ $ sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the 
 ...
 
 $ cd megahit_coassembly
+
 $ mv final.contigs.fa coassembly_final.contigs.fa
 $ sed -i 's/>/>coassembly/g' coassembly_final.contigs.fa
 ```
