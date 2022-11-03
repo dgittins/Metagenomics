@@ -60,3 +60,12 @@ do
 
 done
   ```
+  
+  4. Remove intermediate files
+
+```bash
+rm *.lastbase.fastq
+rm *.adapter.fastq
+rm *.phix.fastq
+```
+
