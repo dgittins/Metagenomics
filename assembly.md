@@ -37,6 +37,6 @@ $ cd sample1_megahit_assembly
 
 $ sample=$(basename "$PWD" _megahit_assembly) #create a variable of the sample name from the directory name
 $ mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
-$ sed -i "s/>/>${sample}/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
+$ sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
 ```
 
