@@ -28,7 +28,7 @@ $ conda install -c bioconda maxbin2
 2. Navigate to a working directory and create links to quality controlled reads, assembled contigs and [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/) files
 
 ```bash
-$ cd ./binning/maxbin2/
+$ cd binning/maxbin2/
 $ ln -s ../../assembly/*/*final.contigs.fa .
 $ ln -s ../../qc/*.qc.fastq . #optional - see below
 $ ln -s ../../mapping/*assembly.depth.txt . #optional - see below
