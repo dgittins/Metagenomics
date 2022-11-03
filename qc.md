@@ -24,7 +24,7 @@ $ ln -s ../fastq/*.fastq.gz .
 bbduk.sh -Xmx10g in=sample1_pass_1.fastq.gz in2=sample1_pass_2.fastq.gz out=sample1_pass_1.lastbase.fastq out2=sample1_pass_2.lastbase.fastq ftm=5 threads=20 >& sample1.lastbase.log.txt
 ```
 
-#Adapter trimming
+#Adapter trimming - remove Illumina adapter sequences
 
 ```bash
 bbduk.sh -Xmx10g in=sample1_pass_1.lastbase.fastq in2=sample1_pass_2.lastbase.fastq out=sample1_pass_1.adapter.fastq out2=sample1_pass_2.adapter.fastq ref=/bbmap-39.01-0/resources/adapters.fa ktrim=r k=23 mink=11 hdist=1 tpe tbo threads=20 >& sample1.adapter.log.txt
