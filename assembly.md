@@ -26,5 +26,5 @@ do
   megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o ${sample}_megahit_assembly  >& ${sample}_megahit.log.txt
 done
 
-megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq,sample2_pass_2.qc.fastq,sample3_pass_2.qc.fastq -t 30 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
+megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq,sample2_pass_2.qc.fastq,sample3_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
 ```
