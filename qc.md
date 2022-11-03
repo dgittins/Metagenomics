@@ -9,6 +9,7 @@ $ conda create -n bbtools -c bioconda bbmap #bbmap contains various bioinformati
 $ conda activate bbtools
 ```
 
+\
 2. Navigate to a working directory and create links to fastq files
 
 ```bash
@@ -16,6 +17,7 @@ $ cd qc/
 $ ln -s ../fastq/*.fastq.gz .
 ```
 
+\
 3. Run BBDuk on fastq.gz files
 
 **Force-Trim Modulo** - remove very inaccurate, low quality last base ('ftm=5' - read length is equal to zero modulo 5)
@@ -59,8 +61,9 @@ do
   bbduk.sh -Xmx10g in=${sample}_pass_1.phix.fastq in2=${sample}_pass_2.phix.fastq out=${sample}_pass_1.qc.fastq out2=${sample}_pass_2.qc.fastq qtrim=rl trimq=15 minlength=30 threads=40 >& ${sample}.quality.log.txt
 
 done
-  ```
-  
+```
+
+\
   4. Remove intermediate files
 
 ```bash
