@@ -78,7 +78,7 @@ $ rm *.phix.fastq
 Install FastQC
 
 ```bash
-$ conda create -n fastqcs -c bioconda fastqc
+$ conda create -n fastqc -c bioconda fastqc
 $ conda activate fastqc
 ```
 
