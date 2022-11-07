@@ -15,9 +15,9 @@ $ conda activate bbtools
 2. Navigate to a working directory and create links to QC fastq files, assemblies and coassemblies
 
 ```bash
-$ cd mapping/
-$ ln -s ../qc/*.qc.fastq .
-$ ln -s ../assembly/*/*_final.contigs.fa .
+$ cd mapping/bbmap/
+$ ln -s ../../qc/*.qc.fastq .
+$ ln -s ../../assembly/*/*_final.contigs.fa .
 ```
 
 \
