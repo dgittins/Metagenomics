@@ -28,7 +28,10 @@ do
 done
 
 #Co-assembly
-megahit -1 sample1_pass_1.qc.fastq,sample2_pass_1.qc.fastq,sample3_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq,sample2_pass_2.qc.fastq,sample3_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
+reads1=`ls ${prefix}*_pass_1.qc.fastq` | sed 's/ /,/g'
+reads2=`ls ${prefix}*_pass_2.qc.fastq` | sed 's/ /,/g'
+
+megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
 ```
 
 \
