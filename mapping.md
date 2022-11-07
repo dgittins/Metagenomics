@@ -20,6 +20,7 @@ $ ln -s ../qc/*.qc.fastq .
 $ ln -s ../assembly/*/*_final.contigs.fa .
 ```
 
+\
 3. Run BBMap to generate sorted, indexed bam files
 
 ```bash
