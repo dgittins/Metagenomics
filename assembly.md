@@ -6,6 +6,7 @@
 
 ```bash
 $ conda create -n megahit -c bioconda megahit
+$ conda activate megahit
 ```
 
 \
