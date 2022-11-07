@@ -20,12 +20,18 @@ $ ln -s ../qc/*.qc.fastq .
 $ ln -s ../assembly/*/*_final.contigs.fa .
 ```
 
-3. Run BBMap
+3. Run BBMap to generate a sorted, indexed bam file
 
 ```bash
-for f in *_pass_1.qc.fastq
+for f in *_final.contigs.fa
 do
-  sample=$(basename $f _pass_1.qc.fastq)
-  bbmap.sh -Xmx10g ref=SRR1375011_final.contigs.fa nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.9
-  covstats=${sample}_SRR1375011assembly.bbmap_covstats.txt scafstats=${sample}_SRR1375011assembly.bbmap_scafstats.txt statsfile=${sample}_SRR1375011assembly.bbmap_stats.txt threads=20 out=${sample}_SRR1375011assembly.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_SRR1375011assembly.bbmap.log.txt
+	contig=$f
+	contign=$(basename $f _final.contigs.fa)
+	
+	for r in *_pass_1.qc.fastq
+	do
+		sample=$(basename $r _pass_1.qc.fastq)
+		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq threads=20 out=${sample}_${contign}contigs.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}contigs.bbmap.log.txt
+	done
 done
+```
