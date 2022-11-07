@@ -18,7 +18,7 @@ $ ln -s ../../assembly/*/.contigs.fa .
 ```
 
 \
-3. Generate contig depth profiles from sorted bam files created during [mapping](https://github.com/dgittins/Metagenomics/blob/main/mapping.md) (there should be one depth file for each assembly, plus one for the coassembly)
+3. Generate contig depth profiles from sorted bam files created during [mapping](https://github.com/dgittins/Metagenomics/blob/main/mappingBBMap.md) (there should be one depth file for each assembly, plus one for the coassembly)
 
 $ cd mapping
 
