@@ -38,6 +38,7 @@ megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit_c
 4. Add a prefix of the sample name to each of the 'final.contigs.fa' files from the previous command and each assembled contig within the respective files. Repeat the commands below for each assembly. 
 
 ```bash
+#Individual assembly
 $ cd sample1_megahit_assembly
 
 $ sample=$(basename "$PWD" _megahit_assembly) #create a variable of the sample name from the directory name
@@ -46,6 +47,7 @@ $ sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the 
 
 ...
 
+#Co-assembly
 $ cd megahit_coassembly
 
 $ mv final.contigs.fa coassembly_final.contigs.fa
