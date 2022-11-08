@@ -26,12 +26,34 @@ $ ln -s ../../assembly/*/*_final.contigs.fa .
 
 ```bash
 #Build an index of the assembly
-$ bowtie2-build -f sample1_final.contigs.fa sample1_bowtie2_contigs --threads 20
+
+for f in *_final.contigs.fa
+do
+	sample=$(basename $f _final.contigs.fa)
+	bowtie2-build -f ${sample}_final.contigs.fa ${sample}.bowtie.contigs --threads 20
+done
+
 
 #Map quality controlled reads to the indexed assembly
-$ bowtie2 -x sample1_bowtie2_contigs -1 sample1_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq --threads 20 -q --sensitive-local | samtools view -bS --threads 20 | samtools sort -m 10G --threads 20 -o sample1_sample1assembly.bowtie_sorted.bam
+
+for f in *.bowtie.contigs
+do
+	contigindex=$f
+	contign=$(basename $f .bowtie.contigs)
+	
+	for r in *_pass_1.qc.fastq
+	do
+		read=$(basename $r _pass_1.qc.fastq)
+		bowtie2 -x ${contigindex} -1 ${read}_pass_1.qc.fastq -2 ${read}_pass_2.qc.fastq --threads 40 -q --sensitive-local | samtools view -bS --threads 40 | samtools sort --threads 40 -o ${read}_${contign}assembly.bowtie.sorted.bam
+	done
+done
+
 
 #Index the sorted bam file
-$ samtools index -m 10G --threads 20 sample1_sample1assembly.bowtie.sorted.bam
+
+for f in *.bowtie.sorted.bam
+do
+	samtools index -@ 40 $f
+done
 ```
 
