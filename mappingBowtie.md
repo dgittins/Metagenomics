@@ -36,15 +36,14 @@ done
 
 #Map quality controlled reads to the indexed assembly
 
-for f in *.bowtie.contigs
+for f in *.bowtie.contigs.1.bt2
 do
-	contigindex=$f
-	contign=$(basename $f .bowtie.contigs)
+	contig=$(basename $f .bowtie.contigs.1.bt2)
 	
 	for r in *_pass_1.qc.fastq
 	do
 		read=$(basename $r _pass_1.qc.fastq)
-		bowtie2 -x ${contigindex} -1 ${read}_pass_1.qc.fastq -2 ${read}_pass_2.qc.fastq --threads 20 -q --sensitive-local | samtools view -bS --threads 20 | samtools sort --threads 20 -o ${read}_${contign}assembly.bowtie.sorted.bam
+		bowtie2 -x ${contig}.bowtie.contigs -1 ${read}_pass_1.qc.fastq -2 ${read}_pass_2.qc.fastq --threads 20 -q --sensitive-local | samtools view -bS --threads 20 | samtools sort --threads 20 -o ${read}_${contign}assembly.bowtie.sorted.bam
 	done
 done
 
