@@ -26,12 +26,12 @@ $ ln -s ../../assembly/*/*_final.contigs.fa .
 
 ```bash
 #Build an index of the assembly
-$ bowtie2-build -f SRR10302630_final.contigs.fa SRR10302630_bowtie2_contigs --threads 20
+$ bowtie2-build -f sample1_final.contigs.fa sample1_bowtie2_contigs --threads 20
 
 #Map quality controlled reads to the indexed assembly
-$ bowtie2 -x SRR10302630_bowtie2_contigs -1 SRR10302630_pass_1.qc.fastq -2 SRR10302630_pass_1.qc.fastq --threads 20 -q --sensitive-local | samtools view -b -S --threads 20 | samtools sort -m 10G --threads 20 -o SRR10302630_SRR10302630assembly.bbmap_sorted.bam
+$ bowtie2 -x sample1_bowtie2_contigs -1 sample1_pass_1.qc.fastq -2 sample1_pass_2.qc.fastq --threads 20 -q --sensitive-local | samtools view -b -S --threads 20 | samtools sort -m 10G --threads 20 -o sample1_sample1assembly.bbmap_sorted.bam | tee sample1.bowtie2_map.log.txt
 
 #Index the sorted bam file
-$ samtools index -m 10G --threads 20 SRR4293331_SRR4293331assembly.bowtie.sorted.bam
+$ samtools index -m 10G --threads 20 sample1_sample1assembly.bowtie.sorted.bam
 ```
 
