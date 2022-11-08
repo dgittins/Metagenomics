@@ -57,13 +57,15 @@ $ less reads.list
 
 Run MaxBin:
 ```bash
-run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
-
+#Individual assembly
 for f in *_final.contigs.fa
 do 
   sample=$(basename $f _final.contigs.fa)
   run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -reads_list reads.list -out ${sample} >& ${sample}.maxbin2.log.txt
 done
+
+#Co-assembly
+run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -reads_list reads.list -out coassembly >& coassembly.maxbin2.log.txt
 ```
 
 \
@@ -74,13 +76,15 @@ Convert [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkel
 Use [depthabundance.py](https://github.com/dgittins/Metagenomics/blob/main/bin/depthabundance.py) script to parse each coverage depth file:
 
 ```bash
-depthabundance.py coassembly.depth.txt
-
+#Individual assembly
 for f in *.depth.txt
 do 
   sample=$(basename $f .depth.txt)
   python depthabundance.py ${sample}.depth.txt
 done
+
+#Co-assembly
+depthabundance.py coassembly.depth.txt
 ```
 
 Create 'abundance.list' files containing lists of the abundance files for each assembly with their absolute paths:
@@ -103,12 +107,14 @@ $ less sample1_abundance.list
 
 Run MaxBin:
 ```bash
-run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
-
+#Individual assembly
 for f in *_final.contigs.fa
 do 
   sample=$(basename $f _final.contigs.fa)
   run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -abund_list ${sample}_abundance.list -out ${sample} >& ${sample}.maxbin2wdepth.log.txt
 done
+
+#Co-assembly
+run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 ```
 
