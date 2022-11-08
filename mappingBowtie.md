@@ -44,7 +44,7 @@ do
 	for r in *_pass_1.qc.fastq
 	do
 		read=$(basename $r _pass_1.qc.fastq)
-		bowtie2 -x ${contigindex} -1 ${read}_pass_1.qc.fastq -2 ${read}_pass_2.qc.fastq --threads 40 -q --sensitive-local | samtools view -bS --threads 40 | samtools sort --threads 40 -o ${read}_${contign}assembly.bowtie.sorted.bam
+		bowtie2 -x ${contigindex} -1 ${read}_pass_1.qc.fastq -2 ${read}_pass_2.qc.fastq --threads 20 -q --sensitive-local | samtools view -bS --threads 20 | samtools sort --threads 20 -o ${read}_${contign}assembly.bowtie.sorted.bam
 	done
 done
 
@@ -53,7 +53,7 @@ done
 
 for f in *.bowtie.sorted.bam
 do
-	samtools index -@ 40 $f
+	samtools index -@ 20 $f
 done
 ```
 
