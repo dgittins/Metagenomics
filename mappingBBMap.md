@@ -21,7 +21,7 @@ $ ln -s ../../assembly/*/*_final.contigs.fa .
 ```
 
 \
-3. Run BBMap to generate sorted, indexed bam files
+3. Run BBMap to generate sorted, indexed bam files of the mapped reads
 
 ```bash
 for f in *_final.contigs.fa
