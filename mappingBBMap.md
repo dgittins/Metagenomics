@@ -32,7 +32,7 @@ do
 	for r in *_pass_1.qc.fastq
 	do
 		sample=$(basename $r _pass_1.qc.fastq)
-		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=20 out=${sample}_${contign}contigs.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}contigs.bbmap.log.txt
+		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=20 outm=${sample}_${contign}contigs.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}contigs.bbmap.log.txt
 	done
 done
 ```
