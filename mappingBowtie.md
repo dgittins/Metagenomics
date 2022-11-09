@@ -9,7 +9,7 @@ To generate 'coverage' information for improved binning, each QC read pair shoul
 ```bash
 $ conda create -n bowtie2 -c bioconda bowtie2
 $ conda activate bowtie2
-$ conda install -c bioconda samtools #reuired for processing sam files
+$ conda install -c bioconda samtools #required for processing sam files
 ```
 
 \
