@@ -17,11 +17,11 @@ $ conda activate bbtools
 ```bash
 $ cd mapping/bbmap/
 $ ln -s ../../qc/*.qc.fastq .
-$ ln -s ../../assembly/*/*_final.contigs.fa .
+$ ln -s ../../assembly/megahit/*/*_final.contigs.fa . #contigs assembled using MEGAHIT or metaSPAdes
 ```
 
 \
-3. Run BBMap to generate sorted, indexed bam files of the mapped reads
+3. Run BBMap to generate sorted, indexed bam files of the mapped reads (unmapped reads omitted by 'outm')
 
 ```bash
 for f in *_final.contigs.fa
