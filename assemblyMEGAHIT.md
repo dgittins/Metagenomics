@@ -36,7 +36,7 @@ megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o <study>_m
 ```
 
 \
-4. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories and each assembled contig within the respective files.
+4. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories and each assembled contig within the respective .fa files.
 
 ```bash
 for dir in */
