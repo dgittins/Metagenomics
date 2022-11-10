@@ -18,7 +18,7 @@ $ conda install -c bioconda samtools #required for processing sam files
 ```bash
 $ cd mapping/bowtie2/
 $ ln -s ../../qc/*.qc.fastq .
-$ ln -s ../../assembly/*/*_final.contigs.fa .
+$ ln -s ../../assembly/*/*_final.contigs.fa . #e.g. contigs assembled using [MEGAHIT](https://github.com/dgittins/Metagenomics/blob/main/assemblyMEGAHIT.md) or [metaSPAdes](https://github.com/dgittins/Metagenomics/blob/main/assemblymetaSPAdes.md)
 ```
 
 \
