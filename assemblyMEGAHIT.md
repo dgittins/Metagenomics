@@ -25,14 +25,14 @@ $ ln -s ../../qc/*.qc.fastq .
 for f in *_pass_1.qc.fastq
 do
   sample=$(basename $f _pass_1.qc.fastq)
-  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o ${sample}_megahit_assembly  >& ${sample}_megahit.log.txt
+  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o ${sample}_megahit.assembly  >& ${sample}_megahit.log.txt
 done
 
 #Co-assembly
 reads1=$(echo `ls ${prefix}*_pass_1.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of forward reads
 reads2=$(echo `ls ${prefix}*_pass_2.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of reverse reads
 
-megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
+megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit.coassembly >& megahit.coassembly.log.txt
 ```
 
 \
@@ -42,14 +42,14 @@ megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit_c
 #Individual assembly
 $ cd sample1_megahit_assembly
 
-$ sample=$(basename "$PWD" _megahit_assembly) #create a variable of the sample name from the directory name
+$ sample=$(basename "$PWD" _megahit.assembly) #create a variable of the sample name from the directory name
 $ mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
 $ sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
 
 ...
 
 #Co-assembly
-$ cd megahit_coassembly
+$ cd megahit.coassembly
 
 $ mv final.contigs.fa coassembly_final.contigs.fa
 $ sed -i 's/>/>coassembly/g' coassembly_final.contigs.fa
