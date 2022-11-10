@@ -25,14 +25,14 @@ $ ln -s ../../qc/*.qc.fastq .
 for f in *_pass_1.qc.fastq
 do
   sample=$(basename $f _pass_1.qc.fastq)
-  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o ${sample}_megahit_assembly  >& ${sample}_megahit.log.txt
+  metaspades.py -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_1.qc.fastq -t 48 -m 180 -o ${sample}.metaspades.assembly >& ${sample}.metaspades.log.txt
 done
 
-#Co-assembly
-reads1=$(echo `ls ${prefix}*_pass_1.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of forward reads
-reads2=$(echo `ls ${prefix}*_pass_2.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of reverse reads
+#Co-assembly (not recommended - https://github.com/ablab/spades/issues/656)
+cat *_pass_1.qc.fastq > all_pass_1.qc.fastq #concatenate forward reads into a single file
+cat *_pass_2.qc.fastq > all_pass_2.qc.fastq #concatenate reverse reads into a single file
 
-megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o megahit_coassembly >& megahit_coassembly.log.txt
+metaspades.py -1 all_pass_1.qc.fastq -2 all_pass_2.qc.fastq -t 48 -m 180 -o metaspades.coassembly >& metaspades.coassembly.log.txt
 ```
 
 \
