@@ -32,7 +32,7 @@ do
 	for r in *_pass_1.qc.fastq
 	do
 		sample=$(basename $r _pass_1.qc.fastq)
-		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=20 outm=${sample}_${contign}contigs.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}contigs.bbmap.log.txt
+		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=20 outm=${sample}_${contign}.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}.bbmap.log.txt
 	done
 done
 ```
@@ -52,9 +52,9 @@ Calculate coverage depth
 for f in *_final.contigs.fa
 do
 sample=$(basename $f _final.contigs.fa)
-jgi_summarize_bam_contig_depths --outputDepth ${sample}assembly.depth_bbmap.txt *${sample}assembly.bbmap_sorted.bam
+jgi_summarize_bam_contig_depths --outputDepth ${sample}.bbmap.depth.txt *${sample}.bbmap.sorted.bam
 done
 
 #Co-assembly
-jgi_summarize_bam_contig_depths --outputDepth coassembly.depth_bbmap.txt *coassembly.bbmap_sorted.bam
+jgi_summarize_bam_contig_depths --outputDepth coassembly.bbmap.depth.txt *coassembly.bbmap.sorted.bam
 ```
