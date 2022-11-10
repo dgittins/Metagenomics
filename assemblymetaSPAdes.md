@@ -36,21 +36,16 @@ metaspades.py -1 all_pass_1.qc.fastq -2 all_pass_2.qc.fastq -t 48 -m 180 -o meta
 ```
 
 \
-4. Add a prefix of the sample name to each of the 'final.contigs.fa' files from the previous command and each assembled contig within the respective files. Repeat the commands below for each assembly. 
+\
+4. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories, as well as each assembled contig within the respective .fa files.
 
 ```bash
-#Individual assembly
-$ cd sample1_megahit_assembly
-
-$ sample=$(basename "$PWD" _megahit_assembly) #create a variable of the sample name from the directory name
-$ mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
-$ sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
-
-...
-
-#Co-assembly
-$ cd megahit_coassembly
-
-$ mv final.contigs.fa coassembly_final.contigs.fa
-$ sed -i 's/>/>coassembly/g' coassembly_final.contigs.fa
+for dir in */
+do
+	cd "$dir"
+	sample=$(basename "$PWD" | cut -d\_ -f1) #create a variable of the sample name from the directory name
+	mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
+	sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
+	cd ../
+done
 ```
