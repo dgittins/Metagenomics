@@ -56,6 +56,6 @@ Calculate coverage depth
 for f in *_final.contigs.fa
 do
 	sample=$(basename $f _final.contigs.fa)
-	jgi_summarize_bam_contig_depths --outputDepth ${sample}_bowtie.depth.txt *${sample}.bowtie.sorted.bam
+	jgi_summarize_bam_contig_depths --outputDepth ${sample}_bbmap.depth.txt *${sample}.bbmap.sorted.bam
 done
 ```
