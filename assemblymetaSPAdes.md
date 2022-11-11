@@ -37,14 +37,21 @@ metaspades.py -1 all_pass_1.qc.fastq -2 all_pass_2.qc.fastq -t 20 -m 50 -o metas
 
 \
 \
-4. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories, as well as each assembled contig within the respective .fa files.
+4. Length filter assembled reads (requires bbtools), add a prefix of the sample name to each of the 'contigs.fasta' files in their respective directories, add a prefix of the sample name to each assembled contig within the respective .fasta files
+
+Install BBDuk
+
+```bash
+$ conda create -n bbtools -c bioconda bbmap #bbmap contains various bioinformatic tools including BBDuk
+$ conda activate bbtools
+```
 
 ```bash
 for dir in */
 do
 	cd "$dir"
 	sample=$(basename "$PWD" | cut -d\_ -f1) #create a variable of the sample name from the directory name
-	mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
+	reformat.sh in=contigs.fasta out=${sample}_final.contigs.fa minlength=500 #length filter and add sample name to file name
 	sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
 	cd ../
 done
