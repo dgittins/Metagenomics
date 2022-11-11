@@ -10,7 +10,7 @@ $ conda activate metabat2
 ```
 
 \
-2. Navigate to a working directory and create links to assembled contig files and depth files created during [mapping](https://github.com/dgittins/Metagenomics/blob/main/mappingBBMap.md)
+2. Navigate to a working directory and create links to assembled contig files and depth files created during [mapping](https://github.com/dgittins/Metagenomics/blob/main/mappingBowtie.md)
 
 ```bash
 $ cd binning/metabat2/
