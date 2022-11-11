@@ -69,7 +69,7 @@ Calculate coverage depth
 ```bash
 for f in *_final.contigs.fa
 do
-sample=$(basename $f _final.contigs.fa)
-jgi_summarize_bam_contig_depths --outputDepth ${sample}.bowtie.depth.txt *${sample}.bowtie.sorted.bam
+	sample=$(basename $f _final.contigs.fa)
+	jgi_summarize_bam_contig_depths --outputDepth ${sample}.bowtie.depth.txt *${sample}.bowtie.sorted.bam
 done
 ```
