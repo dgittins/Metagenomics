@@ -53,13 +53,9 @@ $ conda activate metabat2
 
 Calculate coverage depth
 ```bash
-#Individual assembly
 for f in *_final.contigs.fa
 do
-sample=$(basename $f _final.contigs.fa)
-jgi_summarize_bam_contig_depths --outputDepth ${sample}.bbmap.depth.txt *${sample}.bbmap.sorted.bam
+	sample=$(basename $f _final.contigs.fa)
+	jgi_summarize_bam_contig_depths --outputDepth ${sample}_bowtie.depth.txt *${sample}.bowtie.sorted.bam
 done
-
-#Co-assembly
-jgi_summarize_bam_contig_depths --outputDepth coassembly.bbmap.depth.txt *coassembly.bbmap.sorted.bam
 ```
