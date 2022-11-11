@@ -14,8 +14,8 @@ $ conda activate metabat2
 
 ```bash
 $ cd binning/metabat2/
-$ ln -s ../../assembly/*/.contigs.fa .
-$ ln -s ../../mapping/bbmap/*.bbmap.depth.txt .
+$ ln -s ../../assembly/megahit/*/*.contigs.fa .
+$ ln -s ../../mapping/bowtie/*_bowtie.depth.txt .
 ```
 
 \
