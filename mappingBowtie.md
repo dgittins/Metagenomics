@@ -56,3 +56,20 @@ do
 done
 ```
 
+\
+4. Calculate coverage depth for each sequence in the assembly (and coassembly) using [MetaBAT - jgi_summarize_bam_contig_depths](https://bitbucket.org/berkeleylab/metabat/src/master/)
+
+Install [MetaBAT 2](https://bitbucket.org/berkeleylab/metabat/src/master/)
+```bash
+$ conda create -n metabat2 -c bioconda metabat2
+$ conda activate metabat2
+```
+
+Calculate coverage depth
+```bash
+for f in *_final.contigs.fa
+do
+sample=$(basename $f _final.contigs.fa)
+jgi_summarize_bam_contig_depths --outputDepth ${sample}.bowtie.depth.txt *${sample}.bowtie.sorted.bam
+done
+```
