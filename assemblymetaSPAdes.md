@@ -25,7 +25,7 @@ $ ln -s ../../qc/*.qc.fastq .
 for f in *_pass_1.qc.fastq
 do
   sample=$(basename $f _pass_1.qc.fastq)
-  metaspades.py -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_1.qc.fastq -t 20 -m 50 -o ${sample}_metaspades.assembly >& ${sample}_metaspades.log.txt
+  metaspades.py -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 50 -o ${sample}_metaspades.assembly >& ${sample}_metaspades.log.txt
 done
 
 #Co-assembly (not recommended - https://github.com/ablab/spades/issues/656)
