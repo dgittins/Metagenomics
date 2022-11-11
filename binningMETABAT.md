@@ -25,6 +25,6 @@ $ ln -s ../../mapping/bowtie/*_bowtie.depth.txt .
 for f in *_final.contigs.fa
 do 
 	sample=$(basename $f _final.contigs.fa)
-	metabat2 -i ${sample}_final.contigs.fa -a ${sample}assembly.bbmap.depth.txt -o ${sample}.bin --unbinned -t 20 >& ${sample}.metabat2.log.txt
+	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
 done
 ```
