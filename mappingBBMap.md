@@ -39,6 +39,8 @@ do
 	done
 done
 
+rm *.sam
+
 #Alternative - bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=20 outm=${sample}_${contign}.bbmap.bam bs=bs.sh; sh bs.sh >& ${sample}_${contign}.bbmap.log.txt
 ```
 
