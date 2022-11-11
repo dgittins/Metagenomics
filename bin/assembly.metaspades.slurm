@@ -12,7 +12,7 @@
 ###### Set environment variables ######
 echo "Starting run at : `date`"
 source /home/daniel.gittins/miniconda3/etc/profile.d/conda.sh
-conda activate megahit
+conda activate metaspades
 
 ###### Run your script ######
 
