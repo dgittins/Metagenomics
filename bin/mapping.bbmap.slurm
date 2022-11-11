@@ -27,12 +27,12 @@ do
 		
 		bbmap.sh -Xmx10g ref=${contig} nodisk in=${sample}_pass_1.qc.fastq in2=${sample}_pass_2.qc.fastq minid=0.95 threads=40 outm=${sample}_${contign}.bbmap.sam 
 		samtools view -bS --threads 40 ${sample}_${contign}.bbmap.sam | samtools sort --threads 40 -o ${sample}_${contign}.bbmap.sorted.bam
-		samtools index -@ 20 ${sample}_${contign}.bbmap.sorted.bam
+		samtools index -@ 40 ${sample}_${contign}.bbmap.sorted.bam
 	done
 done
+
+rm *.sam
 
 ##
 echo "Job finished with exit code $? at: `date`"
 ##
-
-
