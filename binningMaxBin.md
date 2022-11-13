@@ -29,9 +29,9 @@ $ conda install -c bioconda maxbin2
 
 ```bash
 $ cd binning/maxbin2/
-$ ln -s ../../assembly/*/*final.contigs.fa .
+$ ln -s ../../assembly/megahit/*/*_final.contigs.fa .
 $ ln -s ../../qc/*.qc.fastq . #optional - see below
-$ ln -s ../../mapping/*assembly.depth.txt . #optional - see below
+$ ln -s ../../mapping/bowtie/*_bowtie.depth.txt . #optional - see below
 ```
 
 \
