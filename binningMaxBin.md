@@ -104,14 +104,10 @@ $ less sample1_abundance.list
 
 Run MaxBin:
 ```bash
-#Individual assembly
 for f in *_final.contigs.fa
 do 
   sample=$(basename $f _final.contigs.fa)
   run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -abund_list ${sample}_abundance.list -out ${sample} >& ${sample}.maxbin2wdepth.log.txt
 done
-
-#Co-assembly
-run_MaxBin.pl -thread 20 -contig coassembly_final.contigs.fa -abund_list coassembly_abundance.list -out coassembly >& coassembly.maxbin2wdepth.log.txt
 ```
 
