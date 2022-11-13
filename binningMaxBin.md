@@ -46,12 +46,12 @@ $ ls -d "$PWD"/*.qc.fastq >> reads.list
 ```bash
 $ less reads.list
 
-/home/username/binning/sample1_pass_1.qc.fastq
-/home/username/binning/sample1_pass_2.qc.fastq
-/home/username/binning/sample2_pass_1.qc.fastq
-/home/username/binning/sample2_pass_2.qc.fastq
-/home/username/binning/sample3_pass_1.qc.fastq
-/home/username/binning/sample3_pass_2.qc.fastq
+/home/username/study/binning/maxbin2/sample1_pass_1.qc.fastq
+/home/username/study/binning/maxbin2/sample1_pass_2.qc.fastq
+/home/username/study/binning/maxbin2/sample2_pass_1.qc.fastq
+/home/username/study/binning/maxbin2/sample2_pass_2.qc.fastq
+/home/username/study/binning/maxbin2/sample3_pass_1.qc.fastq
+/home/username/study/binning/maxbin2/sample3_pass_2.qc.fastq
 ...
 ```
 
@@ -86,18 +86,19 @@ done
 Create 'abundance.list' files containing lists of the abundance files for each assembly with their absolute paths:
 
 ```bash
-$ ls -d "$PWD"/*coassembly.bbmap* >> coassembly_abundance.list
-$ ls -d "$PWD"/*sample1assembly.bbmap* >> sample1_abundance.list
-$ ls -d "$PWD"/*sample2assembly.bbmap* >> sample2_abundance.list
-$ ls -d "$PWD"/*sample3assembly.bbmap* >> sample3_abundance.list
+for f in *_final.contigs.fa
+do 
+	sample=$(basename $f _final.contigs.fa)
+	ls -d "$PWD"/*${sample}.bowtie.sorted.bam.txt >> ${sample}_abundance.list
+done
 ```
 
 ```bash
 $ less sample1_abundance.list
 
-/home/username/binning/sample1_sample1assembly.sorted.bam.txt
-/home/username/binning/sample2_sample1assembly.sorted.bam.txt
-/home/username/binning/sample3_sample1assembly.sorted.bam.txt
+/home/username/study/binning/maxbin2/sample1_sample1assembly.sorted.bam.txt
+/home/username/study/binning/maxbin2/sample2_sample1assembly.sorted.bam.txt
+/home/username/study/binning/maxbin2/sample3_sample1assembly.sorted.bam.txt
 ...
 ```
 
