@@ -28,3 +28,5 @@ do
 	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
 done
 ```
+
+4. Prepare output for DAS Tool 
