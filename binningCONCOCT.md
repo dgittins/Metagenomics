@@ -33,7 +33,7 @@ done
 ```
 
 \
-4. Generate table with coverage depth information per sample and subcontig
+4. Generate a table with coverage depth information per sample and subcontig
  
 ```bash
 for f in *_final.contigs.fa
@@ -74,6 +74,24 @@ do
 	sample=$(basename $f _final.contigs.fa)
 	mkdir ${sample}_concoct.output/fasta.bins
 	extract_fasta_bins.py ${sample}_final.contigs.fa ${sample}_concoct.output/clustering.merged.csv --output_path ${sample}_concoct.output/fasta.bins
+done
+```
+
+\
+8. Add a prefix of the sample name to each of the '.fa' bin files in their respective directories
+
+```bash
+for dir in */fasta.bins/
+do
+	cd "$dir"
+	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the ../directory name
+	
+	for f in *
+	do
+		mv $f ${sample}.$f #add sample name to file name
+	done
+	
+	cd ../../
 done
 ```
 
