@@ -51,7 +51,7 @@ done
 for dir in */fasta.bins/
 do
 	cd "$dir"
-	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the ../directory name
+	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
 	
 	for f in *
 	do
