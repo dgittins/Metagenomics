@@ -107,7 +107,8 @@ Run MaxBin:
 for f in *_final.contigs.fa
 do 
   sample=$(basename $f _final.contigs.fa)
-  run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -abund_list ${sample}_abundance.list -out ${sample} >& ${sample}.maxbin2wdepth.log.txt
+  mkdir ${sample}_maxbin.out 
+  run_MaxBin.pl -thread 20 -contig ${sample}_final.contigs.fa -abund_list ${sample}_abundance.list -out ${sample}_maxbin.out/${sample}_maxbin >& ${sample}.maxbin2.log.txt
 done
 ```
 
