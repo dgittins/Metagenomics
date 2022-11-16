@@ -37,7 +37,6 @@ done
 
 $ wget https://github.com/cmks/DAS_Tool/raw/master/src/Fasta_to_Contig2Bin.sh #script to convert genome bins in fasta format to contigs-to-bin table
 
-
 for dir in */
 do
 	cd "$dir"
