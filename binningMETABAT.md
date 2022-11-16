@@ -25,8 +25,17 @@ $ ln -s ../../mapping/bowtie/*_bowtie.depth.txt .
 for f in *_final.contigs.fa
 do 
 	sample=$(basename $f _final.contigs.fa)
-	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
+	mkdir ${sample}_metabat.out
+	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat.bin --unbinned -t 20 >& ${sample}.metabat2.log.txt
 done
 ```
 
-4. Prepare output for DAS Tool 
+\
+4. Prepare output for DAS Tool bin refinement 
+
+```bash
+
+$ wget https://github.com/cmks/DAS_Tool/raw/master/src/Fasta_to_Contig2Bin.sh #script to convert genome bins in fasta format to contigs-to-bin table
+
+
+Fasta_to_Contigs2Bin.sh -e fasta > my_contigs2bin.tsv
