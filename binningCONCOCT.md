@@ -45,7 +45,7 @@ done
 ```
 
 \
-4. Add a prefix of the sample name to each of the '.fa' bin files in their respective directories
+4. Add a prefix of the sample name and "concoct" to each of the '.fa' bin files in their respective directories
 
 ```bash
 for dir in */fasta.bins/
