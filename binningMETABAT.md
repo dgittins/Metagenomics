@@ -26,7 +26,7 @@ for f in *_final.contigs.fa
 do 
 	sample=$(basename $f _final.contigs.fa)
 	mkdir ${sample}_metabat.out
-	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat.bin --unbinned -t 20 >& ${sample}.metabat2.log.txt
+	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat --unbinned -t 20 >& ${sample}.metabat2.log.txt
 done
 ```
 
