@@ -24,13 +24,13 @@ do
 	
 	concoct_coverage_table.py ${sample}_contigs.10K.bed *${sample}.bowtie.sorted.bam > ${sample}_coverage.table.tsv #generate a table with coverage depth information per sample and subcontig
 	
-	mkdir ${sample}_concoct.output
-	concoct --composition_file ${sample}_contigs.10K.fa --coverage_file ${sample}_coverage.table.tsv -b ${sample}_concoct.output/ >& ${sample}_concoct.log.txt #run concoct
+	mkdir ${sample}_concoct.out
+	concoct --composition_file ${sample}_contigs.10K.fa --coverage_file ${sample}_coverage.table.tsv -t 40 -b ${sample}_concoct.out/ #run concoct
 	
-	merge_cutup_clustering.py ${sample}_concoct.output/clustering_gt1000.csv > ${sample}_concoct.output/clustering.merged.csv #merge subcontig clustering into original contig clustering
+	merge_cutup_clustering.py ${sample}_concoct.out/clustering_gt1000.csv > ${sample}_concoct.out/clustering.merged.csv #merge subcontig clustering into original contig clustering
 	
-	mkdir ${sample}_concoct.output/fasta.bins
-	extract_fasta_bins.py ${sample}_final.contigs.fa ${sample}_concoct.output/clustering.merged.csv --output_path ${sample}_concoct.output/fasta.bins #extract bins as individual FASTA
+	mkdir ${sample}_concoct.out/fasta.bins
+	extract_fasta_bins.py ${sample}_final.contigs.fa ${sample}_concoct.out/clustering.merged.csv --output_path ${sample}_concoct.out/fasta.bins #extract bins as individual FASTA
 	
 done
 
