@@ -38,4 +38,11 @@ done
 $ wget https://github.com/cmks/DAS_Tool/raw/master/src/Fasta_to_Contig2Bin.sh #script to convert genome bins in fasta format to contigs-to-bin table
 
 
-Fasta_to_Contigs2Bin.sh -e fasta > my_contigs2bin.tsv
+for dir in */
+do
+	cd "$dir"
+	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
+	sh ../Fasta_to_Contig2Bin.sh -e [0-99].fa > ../${sample}_metabat.contigs2bin.tsv #run Fasta_to_Contig2Bin script
+	cd ../	
+done
+```
