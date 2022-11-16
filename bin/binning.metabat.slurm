@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --mem=50GB
-#SBATCH --time=05:00:00
+#SBATCH --time=01:00:00
 #SBATCH --partition=cpu2019,apophis-bf,pawson-bf,razi-bf
 
 ###### Set environment variables ######
@@ -20,7 +20,7 @@ for f in *_final.contigs.fa
 do 
 	sample=$(basename $f _final.contigs.fa)
 	mkdir ${sample}_metabat.out
-	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
+	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat --unbinned -t 40 >& ${sample}.metabat2.log.txt
 done
 
 ##
