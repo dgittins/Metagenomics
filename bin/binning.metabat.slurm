@@ -19,7 +19,8 @@ conda activate metabat2
 for f in *_final.contigs.fa
 do 
 	sample=$(basename $f _final.contigs.fa)
-	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
+	mkdir ${sample}_metabat.out
+	metabat2 -i ${sample}_final.contigs.fa -a ${sample}_bowtie.depth.txt -o ${sample}_metabat.out/${sample}_metabat.bin --unbinned -t 40 >& ${sample}.metabat2.log.txt
 done
 
 ##
