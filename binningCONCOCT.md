@@ -34,7 +34,7 @@ do
 	concoct_coverage_table.py ${sample}_contigs.10K.bed *${sample}.bowtie.sorted.bam > ${sample}_coverage.table.tsv #generate a table with coverage depth information per sample and subcontig
 	
 	mkdir ${sample}_concoct.out
-	concoct --composition_file ${sample}_contigs.10K.fa --coverage_file ${sample}_coverage.table.tsv -t 40 -b ${sample}_concoct.out/ #run concoct
+	concoct --composition_file ${sample}_contigs.10K.fa --coverage_file ${sample}_coverage.table.tsv -t 40 -b ${sample}_concoct.out/ > /dev/null 2>&1 #run concoct (redirect stderr and stdout to avoid large output files)
 	
 	merge_cutup_clustering.py ${sample}_concoct.out/clustering_gt1000.csv > ${sample}_concoct.out/clustering.merged.csv #merge subcontig clustering into original contig clustering
 	
