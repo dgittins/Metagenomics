@@ -31,7 +31,7 @@ done
 ```
 
 \
-4. Prepare output for DAS Tool bin refinement 
+4. Generate contigs-to-bin table for DAS Tool bin refinement 
 
 ```bash
 
