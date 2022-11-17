@@ -42,6 +42,6 @@ do
 	cd "$dir"
 	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
 	sh ../Fasta_to_Contig2Bin.sh -e [0-9].fa > ../${sample}_metabat.contigs2bin.tsv #run Fasta_to_Contig2Bin script
-	cd ../	
+	cd ../
 done
 ```
