@@ -28,7 +28,7 @@ $ gawk -i inplace '{print $1 "\t" $5}' *_concoct.contigs2bin.tsv
 for f in *_final.contigs.fa 
 do
 	sample=$(basename $f _final.contigs.fa)
-	DAS_Tool -i ${sample}_concoct.contigs2bin.tsv,${sample}_maxbin.contigs2bin.tsv,${sample}_metabat.contigs2bin.tsv -c ${sample}_final.contigs.fa -o ${sample} --write_bin_evals --write_bins --write_unbinned -t 40 >& ${sample}_dastool.log.txt
+	DAS_Tool -i ${sample}_concoct.contigs2bin.tsv,${sample}_maxbin.contigs2bin.tsv,${sample}_metabat.contigs2bin.tsv -c ${sample}_final.contigs.fa -o ${sample} --write_bin_evals --write_bins --write_unbinned -t 20 >& ${sample}_dastool.log.txt
 done
 ```
 
