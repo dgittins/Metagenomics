@@ -6,8 +6,10 @@
 
 ```bash
 $ git clone --recursive https://github.com/chklovski/checkm2.git && cd checkm2
+
 $ conda env create -n checkm2 -f checkm2.yml #requires sufficient memory - 10 GB RAM?
 $ conda activate checkm2
+
 $ python setup.py install
 ```
 
@@ -19,3 +21,16 @@ $ checkm2 database --download #install it into your default /home/user/databases
 $ checkm2 database --setdblocation /home/user/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd #set database location if using an existing install
 ```
 
+\
+3. Run Checkm2
+
+```bash
+for dir in *_DASTool_bins/
+do
+	cd "$dir"
+	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
+	mkdir ${sample}_checkm2 #create an output directory
+	checkm2 predict --threads 30 --input . -x fasta --output-directory ./${sample}_checkm2 #run CheckM2 script
+	cd ../
+done
+```
