@@ -17,8 +17,11 @@ $ python setup.py install
 2. Download and install the external DIAMOND database
 
 ```bash
-$ checkm2 database --download #install it into your default /home/user/databases directory
-$ checkm2 database --setdblocation /home/user/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd #set database location if using an existing install
+# Option 1 - install it into your default /home/user/databases directory
+$ checkm2 database --download
+
+# Option 2 - set database location using an existing install
+$ checkm2 database --setdblocation /home/user/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd
 ```
 
 \
