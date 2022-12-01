@@ -33,7 +33,7 @@ do
 	cd "$dir"
 	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
 	mkdir ${sample}_checkm2 #create an output directory
-	checkm2 predict --threads 30 --input . -x fasta --output-directory ./${sample}_checkm2 #run CheckM2 script
+	checkm2 predict --threads 30 --input . -x fa --output-directory ./${sample}_checkm2 #run CheckM2 script
 	cd ../
 done
 ```
