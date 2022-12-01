@@ -7,8 +7,6 @@
 ```bash
 $ conda create -n gtdbtk -c conda-forge -c bioconda gtdbtk=2.1.1
 $ conda activate gtdbtk
-
-$ python setup.py install
 ```
 
 \
