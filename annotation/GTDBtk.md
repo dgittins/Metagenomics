@@ -21,7 +21,14 @@ $ conda env config vars set GTDBTK_DATA_PATH=/home/user/databases/GTDB_R207/rele
 ```
 
 \
-3. Run GTDB-Tk
+3. Navigate to a working directory
+
+```bash
+$ cd binning/dastool/
+```
+
+\
+4. Run GTDB-Tk
 
 ```bash
 for dir in *_DASTool_bins/
