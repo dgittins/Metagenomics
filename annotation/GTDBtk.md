@@ -36,7 +36,7 @@ do
 	cd "$dir"
 	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
 	mkdir ${sample}_gtdbtk #create an output directory
-  gtdbtk classify_wf --genome_dir . --out_dir ./${sample}_gtdbtk -x fa --cpus 20 #run GTDB-Tk classify workflow script
+  	gtdbtk classify_wf --genome_dir . --out_dir ./${sample}_gtdbtk -x fa --cpus 20 #run GTDB-Tk classify workflow script
 	cd ../
 done
 ```
