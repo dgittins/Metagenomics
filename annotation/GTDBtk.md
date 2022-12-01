@@ -1,4 +1,4 @@
-# Assess genome bin quality
+# Assign taxonomic classifications to bacterial and archaeal genomes
 
 ## [GTDB-Tk](https://ecogenomics.github.io/GTDBTk/index.html)
 
