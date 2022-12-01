@@ -16,6 +16,20 @@ $ conda activate gtdbtk
 # Option 1 - download and extract the GTDB-Tk reference data
 $ download-db.sh
 
-# Option 2 - alias GTDBTK_DATA_PATH
-$ export GTDBTK_DATA_PATH=/home/user/databases/GTDB_R207/release207_v2
+# Option 2 - create a link (alias) to a directory containing GTDB-Tk reference data
+$ conda env config vars set GTDBTK_DATA_PATH=/home/user/databases/GTDB_R207/release207_v2
+```
+
+\
+3. Run GTDB-Tk
+
+```bash
+for dir in *_DASTool_bins/
+do
+	cd "$dir"
+	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
+	mkdir ${sample}_gtdbtk #create an output directory
+  gtdbtk classify_wf --genome_dir . --out_dir ./${sample}_gtdbtk -x fa --cpus 20 #run GTDB-Tk classify workflow script
+	cd ../
+done
 ```
