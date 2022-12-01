@@ -25,7 +25,14 @@ $ checkm2 database --setdblocation /home/user/databases/checkm2/CheckM2_database
 ```
 
 \
-3. Run Checkm2
+3. Navigate to a working directory
+
+```bash
+$ cd binning/dastool/
+```
+
+\
+4. Run Checkm2
 
 ```bash
 for dir in *_DASTool_bins/
