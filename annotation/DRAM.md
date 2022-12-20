@@ -67,3 +67,10 @@ $ less dram.config
 ```bash
 $ DRAM-setup.py print_config #should return a path for each database
 ```
+
+\
+4. Run DRAM to annotate MAGs
+
+```bash
+DRAM.py annotate -i *.fa -o dram_annotation --threads 20 #requires a lot of memory ~500 GB
+```
