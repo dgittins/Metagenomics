@@ -11,7 +11,7 @@ $ wget https://raw.githubusercontent.com/shafferm/DRAM/master/environment.yaml
 $ conda env create -f environment.yaml -n dram
 $ conda activate dram
 
-$ DRAM-setup.py version #check version 1.4.3 is installed
+$ DRAM-setup.py version #check version 1.4.3 is installed; required for 2. Option 2 step below
 ```
 
 \
