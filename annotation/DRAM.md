@@ -60,3 +60,10 @@ $ less dram.config
   "log_path": null
 }
 ```
+
+\
+3. Check DRAM configuration
+
+```bash
+$ DRAM-setup.py print_config #should return a path for each database
+```
