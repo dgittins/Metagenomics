@@ -1,4 +1,4 @@
-# Annotating metagenomic assembled genomes
+# Annotating metagenome-assembled genomes (MAGs)
 
 ## [DRAM (Distilled and Refined Annotation of Metabolism)](https://github.com/WrightonLabCSU/DRAM)
 
