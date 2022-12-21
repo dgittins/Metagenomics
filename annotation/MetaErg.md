@@ -37,9 +37,9 @@ $ metaerg --create_database PVEBRCSA --database_dir ~/software/singularity/metae
 ```bash
 $ cd singularity run ~/software/singularity/metaerg_database/
 
-$ wget https://services.healthtech.dtu.dk/download/<number>/tmhmm-2.0c.Linux.tar.gz #use emailed software link
+$ wget https://services.healthtech.dtu.dk/download/<number>/tmhmm-2.0c.Linux.tar.gz #update command with emailed software link
 $ tar -xvzf tmhmm-2.0c.Linux.tar.gz #extract download
 
-$ wget https://services.healthtech.dtu.dk/download/<number>/signalp-6.0g.fast.tar.gz #use emailed software link
+$ wget https://services.healthtech.dtu.dk/download/<number>/signalp-6.0g.fast.tar.gz #update command with emailed software link
 $ tar -xvzf signalp-6.0g.fast.tar.gz #extract download
 ```
