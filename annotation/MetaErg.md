@@ -27,6 +27,6 @@ $ singularity run ~/software/singularity/metaerg_latest.sif
 
 ```bash
 $ mkdir metaerg_database
-$ metaerg --download_database --database_dir ~/software/singularity/metaerg_database/
-metaerg --create_database --database_dir /path/to/metaerg-databases/ --gtdbtk_dir /path/to/gtdbtk-database/ [--tasks [PVEBRC]]
+$ metaerg --download_database --database_dir ~/software/singularity/metaerg_database/ #requires sufficient memory, ~50 GB
+$ metaerg --create_database PVEBRCSA --database_dir ~/software/singularity/metaerg_database/
 ```
