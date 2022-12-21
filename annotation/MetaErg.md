@@ -38,10 +38,5 @@ $ metaerg --create_database S --database_dir ~/software/singularity/metaerg_data
 $ cd singularity run ~/software/singularity/metaerg_database/
 
 $ wget https://services.healthtech.dtu.dk/download/<number>/signalp-6.0g.fast.tar.gz #update command with emailed software link
-$ tar -xvzf signalp-6.0g.fast.tar.gz #extract download
-$ rm signalp-6.0g.fast.tar.gz
-
 $ wget https://services.healthtech.dtu.dk/download/<number>/tmhmm-2.0c.Linux.tar.gz #update command with emailed software link
-$ tar -xvzf tmhmm-2.0c.Linux.tar.gz #extract download
-$ rm tmhmm-2.0c.Linux.tar.gz
 ```
