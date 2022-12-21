@@ -32,7 +32,7 @@ $ metaerg --create_database PVEBRCSA --database_dir ~/software/singularity/metae
 ```
 
 \
-4. Download signalp (version signalp 6.0 fast) and TMHMM (version tmhmm 2.0c Linux) from https://services.healthtech.dtu.dk/software.php - requires a form to be filled out and a link to each database is emailed
+4. Download signalp (version signalp 6.0 fast) and TMHMM (version tmhmm 2.0c Linux) from https://services.healthtech.dtu.dk/software.php - requires a form to be filled out and a link to each database will be emailed
 
 ```bash
 $ cd singularity run ~/software/singularity/metaerg_database/
