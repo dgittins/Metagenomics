@@ -30,3 +30,16 @@ $ mkdir metaerg_database
 $ metaerg --download_database --database_dir ~/software/singularity/metaerg_database/ #requires sufficient memory, ~50 GB
 $ metaerg --create_database PVEBRCSA --database_dir ~/software/singularity/metaerg_database/
 ```
+
+\
+4. Download signalp (version signalp 6.0 fast) and TMHMM (version tmhmm 2.0c Linux) from https://services.healthtech.dtu.dk/software.php - requires a form to be filled out and a link to each database is emailed
+
+```bash
+$ cd singularity run ~/software/singularity/metaerg_database/
+
+$ wget https://services.healthtech.dtu.dk/download/<number>/tmhmm-2.0c.Linux.tar.gz #use emailed software link
+$ tar -xvzf tmhmm-2.0c.Linux.tar.gz #extract download
+
+$ wget https://services.healthtech.dtu.dk/download/<number>/signalp-6.0g.fast.tar.gz #use emailed software link
+$ tar -xvzf signalp-6.0g.fast.tar.gz #extract download
+```
