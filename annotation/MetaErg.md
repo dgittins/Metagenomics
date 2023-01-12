@@ -19,7 +19,7 @@ $ conda install -c conda-forge singularity
 ```
 
 \
-2. Download a Singularity Image Format (SIF) image of the [MetaErg Docker image](https://hub.docker.com/r/kinestetika/metaerg)
+2. Download a Singularity Image Format (SIF) file of the [MetaErg Docker image](https://hub.docker.com/r/kinestetika/metaerg)
 
 ```bash
 $ cd ~/software/singularity
@@ -34,12 +34,12 @@ $ singularity run ~/software/singularity/metaerg_latest.sif
 ```
 
 \
-4. Download and create MetaErg database
+4. Install the MetaErg database
 
 ```bash
 $ mkdir metaerg_database
 $ metaerg --download_database --database_dir ~/software/singularity/metaerg_database/ #requires sufficient memory, ~50 GB (?)
-$ metaerg --create_database S --database_dir ~/software/singularity/metaerg_database/
+$ metaerg --create_database S --database_dir ~/software/singularity/metaerg_database/ # update the hmm functional gene database to the latest version
 ```
 
 \
