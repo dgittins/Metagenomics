@@ -53,7 +53,7 @@ $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > 
 ```
 
 ```bash
-# Create a list of good bins (list can be used to create links to good bins when, for example, annotating)
+# Create a list of good bins (list can be used to create links / copy good bins before annotation)
 
 for dir in *_DASTool_bins/*_checkm2/
 do
