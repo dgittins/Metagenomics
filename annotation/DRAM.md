@@ -73,11 +73,10 @@ $ DRAM-setup.py print_config #should return a path for each database
 
 ```bash
 $ cd annotation/
-$ cat ../binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list #list of good bins
+$ cat ../binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list #concatenate the lists of good bins
+$ awk 'NR > 1{ print $1 }' dastool_goodbins.list | xargs -I{} sh -c 'ln -s ../binning/dastool/*/{}' . #create a sym link to good bins
 
-
-
-
+```
 
 \
 5. Run DRAM to annotate MAGs
