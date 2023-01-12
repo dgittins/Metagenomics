@@ -63,6 +63,10 @@ do
 	cd ../../
 done
 
+# Other code
 $ xargs -a quality_report_good.list cp -t ./sample1_goodbins #copy good quality bins to a new directory
+
+$ cd binning/
+$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > goodbins.list #concatenate lists of good bins
 ```
 
