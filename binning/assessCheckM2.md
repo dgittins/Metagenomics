@@ -69,8 +69,19 @@ $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > 
 # Copy good quality bins to a new directory
 $ xargs -a quality_report_good.list cp -t ./sample1_goodbins
 
-# Concatenate lists of good bins
+# Concatenate lists of good bins in each study
 $ cd binning/
 $ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
+
+# Concatenate lists of good bins across all studies
+$ cd metagenomes/
+$ cat */binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
+
+# Count the number of good bins across all studies
+$ cd metagenomes/
+for f in */binning/dastool_goodbins.list
+do
+cat "$f" | wc -l
+done
 ```
 
