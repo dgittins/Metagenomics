@@ -50,7 +50,9 @@ done
 
 ```bash
 $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
+```
 
+```bash
 # Other code
 $ awk '{ if (($2 > 50) && ($3 < 10)) { print $1} }' quality_report.tsv > quality_report_good.list #create a list of good quality bin names
 $ sed -e 's/$/.fa/' -i quality_report_good.list #append '.fa' to bin names
