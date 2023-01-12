@@ -46,7 +46,7 @@ done
 ```
 
 \
-5. Create a modified checkm2 report file listing only the 'good' / '[medium-quality draft](https://www.nature.com/articles/nbt.3893)' bins (completeness >50%, contamination <10%)
+5. Create a modified Checkm2 report file listing only the 'good' / '[medium-quality draft](https://www.nature.com/articles/nbt.3893)' bins (completeness >50%, contamination <10%)
 
 ```bash
 $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
