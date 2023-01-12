@@ -44,3 +44,10 @@ do
 	cd ../
 done
 ```
+
+\
+5. Create an output file listing only the 'good' bins (completeness >50%, contamination <10%)
+
+```bash
+$ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
+```
