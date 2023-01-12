@@ -38,6 +38,7 @@ $ singularity run ~/software/singularity/metaerg_latest.sif
 
 ```bash
 $ mkdir metaerg_database
+
 $ metaerg --download_database --database_dir ~/software/singularity/metaerg_database/ #requires sufficient memory, ~50 GB (?)
 $ metaerg --create_database S --database_dir ~/software/singularity/metaerg_database/ # update the hmm functional gene database to the latest version
 ```
