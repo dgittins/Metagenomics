@@ -6,11 +6,21 @@
 
 Commands for installing from Docker using Singularity on a High Performance Computing (HPC) cluster
 
+**Option 1** - Install singularity in a conda environment
 ```bash
 $ conda create -n singularity 
 $ conda activate singularity
 $ conda install -c conda-forge singularity
+```
 
+**Option 2** - Use a pre-existing install of singularity on HPC cluster
+```bash
+$ module load singularity
+```
+
+\
+2. Download a Singularity Image Format (SIF) image of the [MetaErg docker image](https://hub.docker.com/r/kinestetika/metaerg)
+```bash
 $ cd ~/software/singularity
 $ singularity pull docker://kinestetika/metaerg #first pull attempt did not create the metaerg_latest.sif file - used 'singularity cache clean' and re-ran pull command 
 ```
