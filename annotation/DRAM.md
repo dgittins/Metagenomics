@@ -69,7 +69,18 @@ $ DRAM-setup.py print_config #should return a path for each database
 ```
 
 \
-4. Run DRAM to annotate MAGs
+4. Navigate to a working directory and create links to 'good' / '[medium-quality draft](https://www.nature.com/articles/nbt.3893)' bins (completeness >50%, contamination <10%) based on [Checkm2 workflow](https://github.com/dgittins/Metagenomics/edit/main/binning/assessCheckM2.md) results
+
+```bash
+$ cd annotation/
+$ cat ../binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list #list of good bins
+
+
+
+
+
+\
+5. Run DRAM to annotate MAGs
 
 ```bash
 $ DRAM.py annotate -i *.fa -o dram_annotation --threads 20 #requires a lot of memory, ~500 GB
