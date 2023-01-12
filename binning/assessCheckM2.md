@@ -71,6 +71,6 @@ $ xargs -a quality_report_good.list cp -t ./sample1_goodbins
 
 # Concatenate lists of good bins
 $ cd binning/
-$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > goodbins.list
+$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
 ```
 
