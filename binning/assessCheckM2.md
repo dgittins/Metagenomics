@@ -46,15 +46,10 @@ done
 ```
 
 \
-5. Create a modified Checkm2 report file listing only the 'good' / '[medium-quality draft](https://www.nature.com/articles/nbt.3893)' bins (completeness >50%, contamination <10%)
-
+5. Create a list of the 'good' / '[medium-quality draft](https://www.nature.com/articles/nbt.3893)' bins (completeness >50%, contamination <10%)
+ from the Checkm2 report file
+ 
 ```bash
-$ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
-```
-
-```bash
-# Create a list of good bins (list can be used to create links / copy good bins before annotation)
-
 for dir in *_DASTool_bins/*_checkm2/
 do
 	cd "$dir"
@@ -62,11 +57,19 @@ do
 	sed -e 's/$/.fa/' -i quality_report_good.list #append '.fa' to bin names
 	cd ../../
 done
+```
 
-# Other code
-$ xargs -a quality_report_good.list cp -t ./sample1_goodbins #copy good quality bins to a new directory
+Other useful code:
 
+```bash
+# Create a modified Checkm2 report file
+$ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
+
+# Copy good quality bins to a new directory
+$ xargs -a quality_report_good.list cp -t ./sample1_goodbins
+
+# Concatenate lists of good bins
 $ cd binning/
-$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > goodbins.list #concatenate lists of good bins
+$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > goodbins.list
 ```
 
