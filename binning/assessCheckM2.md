@@ -53,7 +53,17 @@ $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > 
 ```
 
 ```bash
-# Other code
+# Create a list of good bins (list can be used to create links to good bins when, for example, annotating)
+
+for dir in *_DASTool_bins/*_checkm2/
+do
+	cd "$dir"
+	awk '{ if (($2 > 50) && ($3 < 10)) { print $1} }' quality_report.tsv > quality_report_good.list #create a list of good quality bin names
+	sed -e 's/$/.fa/' -i quality_report_good.list #append '.fa' to bin names
+	cd ../../
+done
+
+
 $ awk '{ if (($2 > 50) && ($3 < 10)) { print $1} }' quality_report.tsv > quality_report_good.list #create a list of good quality bin names
 $ sed -e 's/$/.fa/' -i quality_report_good.list #append '.fa' to bin names
 $ xargs -a quality_report_good.list cp -t ./sample1_goodbins #copy good quality bins to a new directory
