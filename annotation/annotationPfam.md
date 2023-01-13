@@ -32,7 +32,7 @@ $ cd annotation/
 for f in ../*_proteins.faa
 do
 	sample=$(basename $f _proteins.faa)
-	hmmscan --tblout ${sample}.tblout --domtblout ${sample}.domtblout --noali --notextw --cut_tc --cpu 40 /work/ebg_lab/referenceDatabases/Pfam/Pfam-A.hmm ../${sample}_proteins.faa > ${sample}.hmmscan.tc.out
+	hmmscan --tblout ${sample}.tblout --domtblout ${sample}.domtblout --noali --notextw --cut_tc --cpu 40 /work/lab/ReferenceDatabases/Pfam/Pfam-A.hmm ../${sample}_proteins.faa > ${sample}.hmmscan.tc.out
 done
 ```
 
