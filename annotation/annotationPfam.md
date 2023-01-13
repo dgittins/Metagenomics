@@ -2,6 +2,8 @@
 
 ## HMM searches against [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
 
+Workflow assumes gene-predictions have been made - see [Prodigal workflow](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md)
+
 1. Create a conda environment with HMMER installed
 
 ```bash
