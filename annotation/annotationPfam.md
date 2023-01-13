@@ -1,6 +1,6 @@
-# Annotating metagenome-assembled genomes (MAGs) with HMM searches against Pfam
+# Annotating metagenome-assembled genomes (MAGs)
 
-## [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
+## HMM searches against [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
 
 1. Create a conda environment with HMMER installed
 
