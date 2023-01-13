@@ -1,4 +1,6 @@
-# Protein-coding gene prediction using [Prodigal](https://github.com/hyattpd/Prodigal)
+# Protein-coding gene prediction
+
+[Prodigal](https://github.com/hyattpd/Prodigal)
 
 ## [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
 
