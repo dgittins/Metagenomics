@@ -23,8 +23,10 @@ $ awk 'NR > 1{ print $1 }' dastool_goodbins.list | xargs -I{} sh -c 'ln -s ../bi
 
 ```bash
 $ cd annotation/
+
 for f in *.fa
 do 
-    sample=$(basename $f _*.*.fa)
-    prodigal -i ${sample}_final.contigs.fa -o ${sample}_gene.coords.gbk -a ${sample}_proteins.faa -d ${sample}_nucleotides.fa -p meta >& ${sample}.prodigal.log.txt
+    sample=$(basename $f .fa)
+    prodigal -i ${sample}.fa -o ${sample}_gene.coords.gbk -a ${sample}_proteins.faa -d ${sample}_nucleotides.fa -p meta
 done
+```
