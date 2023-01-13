@@ -1,4 +1,4 @@
-# Annotating metagenome-assembled genomes (MAGs) with HMM searches against Pfam
+# Protein-coding gene prediction using [Prodigal](https://github.com/hyattpd/Prodigal)
 
 ## [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
 
