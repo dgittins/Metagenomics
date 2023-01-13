@@ -2,7 +2,7 @@
 
 ## [Prodigal](https://github.com/hyattpd/Prodigal)
 
-1. Create a conda environment with Prodigal installed
+1. Create a conda environment and install Prodigal
 
 ```bash
 $ conda create -n prodigal -c bioconda prodigal
