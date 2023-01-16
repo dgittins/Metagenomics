@@ -2,7 +2,7 @@
 
 ## RPS-BLAST (Reverse Position-Specific BLAST) search against the [Conserved Domain Database](https://www.ncbi.nlm.nih.gov/Structure/cdd/cdd_help.shtml#RPSBFtpDat) (CDD)
 
-This search uses RPS-BLAST to compare a query protein sequence against conserved domain models that have been collected from the SMART, Pfam, COGs, TIGRFAMs, PRK, KOGs and LOAD source databases.
+This search uses RPS-BLAST to compare query protein sequences against conserved domain models that have been collected from the SMART, Pfam, COGs, TIGRFAMs, PRK, KOGs and LOAD source databases.
 
 1. Create a conda environment and install NCBIs BLAST tool
 
