@@ -38,6 +38,7 @@ done
 ```
 
 <br/>
+\
 ## Additional hydrogenase workflow
 
 a. Parse out useful information, e.g., names/accessions of contigs (i.e., column 1) with 'hydrogenase' annotation
