@@ -41,10 +41,12 @@ done
 4. Parse out useful information, e.g., names/accessions of contigs (i.e., column 1) with 'hydrogenase' annotation
 
 ```bash
-for f in *.blastout
+cd /annotation/hydrogenase/
+
+for f in ../cdd/*.blastout
 do 
 	sample=$(basename $f .blastout)
-	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate contig accessions
+	grep -hrw "hydrogenase" ../cdd/${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate contig accessions
 done
 ```
 
