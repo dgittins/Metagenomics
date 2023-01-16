@@ -42,6 +42,6 @@ done
 ```bash
 for f in *.blastout
 	do sample=$(basename $f .blastout)
-	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' > ${new}.hydrogenase.acc.txt
+	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' > ${sample}.hydrogenase.acc.txt
 done
 ```
