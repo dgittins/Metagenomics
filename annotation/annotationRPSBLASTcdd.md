@@ -44,7 +44,7 @@ done
 for f in *.blastout
 do 
 	sample=$(basename $f .blastout)
-	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last pipe removes duplicates
+	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate contig accessions
 done
 ```
 
@@ -55,6 +55,6 @@ done
 for f in ../*_proteins.faa
 do 
 	sample=$(basename $f _proteins.faa)
-	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.blastout --no-group-separator > ${sample}.hydrogenase.faa
+	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.hydrogenase.acc.txt --no-group-separator > ${sample}.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
 done
 ```
