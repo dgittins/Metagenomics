@@ -25,7 +25,7 @@ $ rm Cdd_LE.tar.gz
 ```
 
 \
-3. Navigate to a working directory containing links to gene-predictions from metagenome bins and run RPS-BLAST
+3. Navigate to a working directory containing links to gene-predictions from metagenome bins (cf. [Prodigal](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md) workflow) and run RPS-BLAST
 
 ```bash
 $ cd annotation/cdd/
