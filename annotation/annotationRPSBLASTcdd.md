@@ -37,7 +37,8 @@ do
 done
 ```
 
-\4. Parse out useful information, e.g., names of contigs (column 3) with 'hydrogenase' annotation
+\
+4. Parse out useful information, e.g., names of contigs (column 3) with 'hydrogenase' annotation
 
 ```bash
 for f in *.blastout
