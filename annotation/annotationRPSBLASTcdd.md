@@ -67,3 +67,7 @@ done
 # Concatenate all hydrogenase sequencess into one file to run through online HydDB hydrogenase classifier
 $ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
 ```
+
+c. Copy local HydDB output to server, then parse squences with hydrogenase annotation
+
+```bash
