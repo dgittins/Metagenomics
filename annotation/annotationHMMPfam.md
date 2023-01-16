@@ -22,7 +22,7 @@ $ hmmpress Pfam-A.hmm
 ```
 
 \
-3. Navigate to a working directory containing links to gene-predictions (cf. [Prodigal](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md)) from metagenome bins and run hmmscan against Pfam HMMs
+3. Navigate to a working directory containing links to gene-predictions (cf. [Prodigal](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md) workflow) from metagenome bins and run hmmscan against Pfam HMMs
 
 ```bash
 $ cd annotation/
