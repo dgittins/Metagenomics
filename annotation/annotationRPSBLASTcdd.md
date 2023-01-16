@@ -38,11 +38,23 @@ done
 ```
 
 \
-4. Parse out useful information, e.g., names of contigs (column 3) with 'hydrogenase' annotation
+4. Parse out useful information, e.g., names/accessions of contigs (column 3) with 'hydrogenase' annotation
 
 ```bash
 for f in *.blastout
-	do sample=$(basename $f .blastout)
+do 
+	sample=$(basename $f .blastout)
 	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last pipe removes duplicates
+done
+```
+
+\
+5. Extract fasta sequences using the sequence accession/name list (https://www.biostars.org/p/319099/)
+
+```bash
+for f in ../*_proteins.faa
+do 
+	sample=$(basename $f _proteins.faa)
+	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.blastout --no-group-separator > ${sample}.hydrogenase.faa
 done
 ```
