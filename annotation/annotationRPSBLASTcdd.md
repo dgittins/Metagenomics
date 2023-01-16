@@ -40,7 +40,7 @@ done
 \4. Parse out useful information, e.g., names of contigs (column 3) with 'hydrogenase' annotation
 
 ```bash
-for f in *..blastout
+for f in *.blastout
 	do sample=$(basename $f .blastout)
 	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' > ${new}.hydrogenase.acc.txt
 done
