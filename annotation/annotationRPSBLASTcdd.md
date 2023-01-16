@@ -17,23 +17,22 @@ $ conda activate blast
 Navigate to https://ftp.ncbi.nih.gov/pub/mmdb/cdd/little_endian/ - the "little_endian" subdirectory contains a pre-formatted search database for use with the standalone RPS-BLAST executable
 
 ```bash
-$ cd /work/lab/ReferenceDatabases/Pfam
+$ cd ~/software/rpsblast/cdd
 
-$ wget http://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
-$ gunzip Pfam-A.hmm.gz
-
-$ hmmpress Pfam-A.hmm
+$ wget https://ftp.ncbi.nih.gov/pub/mmdb/cdd/little_endian/Cdd_LE.tar.gz
+$ tar -xvzf Cdd_LE.tar.gz
+$ rm Cdd_LE.tar.gz
 ```
 
 \
-3. Navigate to a working directory containing links to gene-predictions from metagenome bins and run hmmscan against Pfam HMMs
+3. Navigate to a working directory containing links to gene-predictions from metagenome bins and run RPS-BLAST
 
 ```bash
-$ cd annotation/
+$ cd annotation/cdd/
 
 for f in ../*_proteins.faa
 do
 	sample=$(basename $f _proteins.faa)
-	hmmscan --tblout ${sample}.tblout --domtblout ${sample}.domtblout --noali --notextw --cut_tc --cpu 40 /work/lab/ReferenceDatabases/Pfam/Pfam-A.hmm ../${sample}_proteins.faa > ${sample}.hmmscan.tc.out
+	rpsblast -query ../${sample}_proteins.faa -db ~/software/rpsblast/cdd/Cdd -out ${sample}.cdd.blastout -evalue 1e-7 -outfmt '6 qseqid sseqid sacc evalue bitscore stitle' -num_threads 40 
 done
 ```
