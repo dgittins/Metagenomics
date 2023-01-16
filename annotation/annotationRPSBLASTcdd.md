@@ -60,6 +60,6 @@ done
 ```
 
 ```bash
-#Concatenate all hydrogenase sequencess into one file to run through online HydDB hydrogenase classifier
+# Concatenate all hydrogenase sequencess into one file to run through online HydDB hydrogenase classifier
 $ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
 ```
