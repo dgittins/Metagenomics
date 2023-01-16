@@ -36,3 +36,12 @@ do
 	rpsblast -query ../${sample}_proteins.faa -db ~/software/rpsblast/cdd/Cdd -out ${sample}.cdd.blastout -evalue 1e-7 -outfmt '6 qseqid sseqid sacc evalue bitscore stitle' -num_threads 40 
 done
 ```
+
+\4. Parse out useful information, e.g., names of contigs (column 3) with 'hydrogenase' annotation
+
+```bash
+for f in *..blastout
+	do sample=$(basename $f .blastout)
+	grep -hrw "hydrogenase" ${sample}.blastout | awk '{print $1}' > ${new}.hydrogenase.acc.txt
+done
+```
