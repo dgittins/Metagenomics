@@ -58,3 +58,8 @@ do
 	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.hydrogenase.acc.txt --no-group-separator > ${sample}.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
 done
 ```
+
+```bash
+#Concatenate all hydrogenase sequencess into one file to run through online HydDB hydrogenase classifier
+$ cat *.hydrogenase.faa
+```
