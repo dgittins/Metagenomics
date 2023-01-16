@@ -2,8 +2,6 @@
 
 ## HMM searches against [Pfam](https://academic.oup.com/nar/article/26/1/320/2379329)
 
-Workflow assumes gene-predictions have been made, e.g., using [Prodigal](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md)
-
 1. Create a conda environment with HMMER installed
 
 ```bash
@@ -24,7 +22,7 @@ $ hmmpress Pfam-A.hmm
 ```
 
 \
-3. Navigate to a working directory containing links to gene-predictions from metagenome bins and run hmmscan against Pfam HMMs
+3. Navigate to a working directory containing links to gene-predictions (cf. [Prodigal](https://github.com/dgittins/Metagenomics/blob/main/annotation/genepredictionProdigal.md)) from metagenome bins and run hmmscan against Pfam HMMs
 
 ```bash
 $ cd annotation/
