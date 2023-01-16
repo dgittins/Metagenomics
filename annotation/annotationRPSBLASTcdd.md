@@ -38,7 +38,9 @@ done
 ```
 
 \
-4. Parse out useful information, e.g., names/accessions of contigs (i.e., column 1) with 'hydrogenase' annotation
+## Additional hydrogenase workflow
+
+a. Parse out useful information, e.g., names/accessions of contigs (i.e., column 1) with 'hydrogenase' annotation
 
 ```bash
 cd /annotation/hydrogenase/
@@ -51,7 +53,7 @@ done
 ```
 
 \
-5. Extract fasta sequences using the sequence accession/name list (https://www.biostars.org/p/319099/)
+b. Extract fasta sequences using the sequence accession/name list (https://www.biostars.org/p/319099/)
 
 ```bash
 for f in ../*_proteins.faa
