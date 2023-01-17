@@ -71,9 +71,9 @@ $ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
 c. Copy local HydDB output to server, then parse squences with hydrogenase annotation
 
 ```bash
-$ awk -F '";"' '{ print $1"\t"$2 }' sample1_hyddb.results.csv > sample1_hyddb.hydrogenase.acc.txt #split text to columns by ";"
-$ sed -i -e s/\"//g sample1_hyddb.hydrogenase.acc.txt #remove quotation marks added by HydDB
-$ awk -i inplace '{ if ($2 != "NONHYDROGENASE") { print $1 } }' sample1_hyddb.hydrogenase.acc.txt #filter to column 1 (sequence name/accession) when column 2 does not equal 'NONHYDROGENASE'
+$ awk '!/NONHYDROGENASE/' Christman_hyddb.results.csv > asample1_hyddb.hydrogenase.acc.txt #write rows without 'NONHYDROGENASE'
+$ awk -i inplace -F '";"' '{print $1}' asample1_hyddb.hydrogenase.acc.txt #print everything before the delimeter '";"'
+$ sed -i -e s/\"//g asample1_hyddb.hydrogenase.acc.txt #remove quotes added by HydDB
 ```
 
 d. Extract fasta sequences using the HydDB sequence name/accession list
