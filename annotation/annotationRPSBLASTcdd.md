@@ -82,6 +82,6 @@ d. Extract fasta sequences using the HydDB sequence name/accession list
 for f in ../*_proteins.faa
 do 
 	sample=$(basename $f _proteins.faa)
-	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff Christman_hyddb.hydrogenase.acc.txt --no-group-separator > ${sample}.hyddb.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
+	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff sample1_hyddb.hydrogenase.acc.txt --no-group-separator > ${sample}.hyddb.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
 done
 ```
