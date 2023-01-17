@@ -71,7 +71,7 @@ $ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
 c. Copy local HydDB output to server, then parse squences with hydrogenase annotation
 
 ```bash
-$ awk -F '";"' '{ print $1"\t"$2 }' sample1_hyddb.results.csv > Christman_hyddb.hydrogenase.acc.txt #split text to columns by ";"
+$ awk -F '";"' '{ print $1"\t"$2 }' sample1_hyddb.results.csv > sample1_hyddb.hydrogenase.acc.txt #split text to columns by ";"
 $ sed -i -e s/\"//g sample1_hyddb.hydrogenase.acc.txt #remove quotation marks added by HydDB
 $ awk -i inplace '{ if ($2 != "NONHYDROGENASE") { print $1 } }' sample1_hyddb.hydrogenase.acc.txt #filter to column 1 (contig accession) when column 2 does not equal 'NONHYDROGENASE'
 ```
