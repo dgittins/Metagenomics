@@ -38,6 +38,6 @@ done
 for f in *_proteins.faa
 do
     sample=$(basename $f _proteins.faa)
-    sed -i -e "s/>/>${sample} /g" ${sample}_proteins.faa
+    sed -i -e "s/>/>${sample}_/g" ${sample}_proteins.faa
 done
 ```
