@@ -46,10 +46,10 @@ a. Parse out useful information from RPS-BLAST output, e.g., names/accessions of
 ```bash
 cd /annotation/hydrogenase/
 
-for f in ../cdd/*.blastout
+for f in ../cdd/*.cdd.blastout
 do 
-	sample=$(basename $f .blastout)
-	grep -hrw "hydrogenase" ../cdd/${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate sequence names/accessions
+	sample=$(basename $f .cdd.blastout)
+	grep -hrw "hydrogenase" ../cdd/${sample}.cdd.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.cdd.hydrogenase.acc.txt #last command removes duplicate sequence names/accessions
 done
 ```
 
@@ -59,13 +59,13 @@ b. Extract fasta sequences using the sequence name/accession list (cf. https://w
 for f in ../*_proteins.faa
 do 
 	sample=$(basename $f _proteins.faa)
-	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.hydrogenase.acc.txt --no-group-separator > ${sample}.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
+	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.hydrogenase.acc.txt --no-group-separator > ${sample}.cdd.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
 done
 ```
 
 ```bash
 # Concatenate all hydrogenase sequencess into one file to run through online [HydDB](https://services.birc.au.dk/hyddb/) hydrogenase classifier
-$ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
+$ cat *.cdd.hydrogenase.faa > sample1_all.cdd.hydrogenase.seqs.faa
 ```
 
 c. Copy local HydDB output to server, then parse squences with hydrogenase annotation
