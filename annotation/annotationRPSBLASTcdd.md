@@ -41,7 +41,7 @@ done
 
 ## Additional hydrogenase workflow
 
-a. Parse out useful information, e.g., names/accessions of contigs (i.e., column 1) with 'hydrogenase' annotation
+a. Parse out useful information, e.g., names/accessions of sequences (i.e., column 1) with 'hydrogenase' annotation
 
 ```bash
 cd /annotation/hydrogenase/
@@ -49,11 +49,11 @@ cd /annotation/hydrogenase/
 for f in ../cdd/*.blastout
 do 
 	sample=$(basename $f .blastout)
-	grep -hrw "hydrogenase" ../cdd/${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate contig accessions
+	grep -hrw "hydrogenase" ../cdd/${sample}.blastout | awk '{print $1}' | awk '!seen[$0]++' > ${sample}.hydrogenase.acc.txt #last command removes duplicate sequence names/accessions
 done
 ```
 
-b. Extract fasta sequences using the sequence accession/name list (https://www.biostars.org/p/319099/)
+b. Extract fasta sequences using the sequence name/accession list (https://www.biostars.org/p/319099/)
 
 ```bash
 for f in ../*_proteins.faa
@@ -73,5 +73,5 @@ c. Copy local HydDB output to server, then parse squences with hydrogenase annot
 ```bash
 $ awk -F '";"' '{ print $1"\t"$2 }' sample1_hyddb.results.csv > sample1_hyddb.hydrogenase.acc.txt #split text to columns by ";"
 $ sed -i -e s/\"//g sample1_hyddb.hydrogenase.acc.txt #remove quotation marks added by HydDB
-$ awk -i inplace '{ if ($2 != "NONHYDROGENASE") { print $1 } }' sample1_hyddb.hydrogenase.acc.txt #filter to column 1 (contig accession) when column 2 does not equal 'NONHYDROGENASE'
+$ awk -i inplace '{ if ($2 != "NONHYDROGENASE") { print $1 } }' sample1_hyddb.hydrogenase.acc.txt #filter to column 1 (sequence name/accession) when column 2 does not equal 'NONHYDROGENASE'
 ```
