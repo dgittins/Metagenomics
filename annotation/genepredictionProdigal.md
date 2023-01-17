@@ -30,3 +30,14 @@ do
     prodigal -i ${sample}.fa -o ${sample}_gene.coords.gbk -a ${sample}_proteins.faa -d ${sample}_nucleotides.fa -p meta
 done
 ```
+
+\
+4. Append bin name and number to each sequence
+
+```bash
+for f in *_proteins.faa
+do
+    sample=$(basename $f _proteins.faa)
+    sed -i -e "s/>/>${sample} /g" ${sample}_proteins.faa
+done
+```
