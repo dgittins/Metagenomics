@@ -41,7 +41,7 @@ done
 
 ## Additional hydrogenase workflow
 
-a. Parse out useful information, e.g., names/accessions of sequences (i.e., column 1) with 'hydrogenase' annotation
+a. Parse out useful information from RPS-BLAST output, e.g., names/accessions of sequences (i.e., column 1) with 'hydrogenase' annotation
 
 ```bash
 cd /annotation/hydrogenase/
@@ -53,7 +53,7 @@ do
 done
 ```
 
-b. Extract fasta sequences using the sequence name/accession list (https://www.biostars.org/p/319099/)
+b. Extract fasta sequences using the sequence name/accession list (cf. https://www.biostars.org/p/319099/)
 
 ```bash
 for f in ../*_proteins.faa
@@ -64,7 +64,7 @@ done
 ```
 
 ```bash
-# Concatenate all hydrogenase sequencess into one file to run through online HydDB hydrogenase classifier
+# Concatenate all hydrogenase sequencess into one file to run through online [HydDB](https://services.birc.au.dk/hyddb/) hydrogenase classifier
 $ cat *.hydrogenase.faa > sample1_all.hydrogenase.seqs.faa
 ```
 
@@ -74,4 +74,14 @@ c. Copy local HydDB output to server, then parse squences with hydrogenase annot
 $ awk -F '";"' '{ print $1"\t"$2 }' sample1_hyddb.results.csv > sample1_hyddb.hydrogenase.acc.txt #split text to columns by ";"
 $ sed -i -e s/\"//g sample1_hyddb.hydrogenase.acc.txt #remove quotation marks added by HydDB
 $ awk -i inplace '{ if ($2 != "NONHYDROGENASE") { print $1 } }' sample1_hyddb.hydrogenase.acc.txt #filter to column 1 (sequence name/accession) when column 2 does not equal 'NONHYDROGENASE'
+```
+
+d. Extract fasta sequences using the HydDB sequence name/accession list
+
+```bash
+for f in ../*_proteins.faa
+do 
+	sample=$(basename $f _proteins.faa)
+	awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < ../${sample}_proteins.faa | grep -w -A 1 -Ff ${sample}.cdd.hydrogenase.acc.txt --no-group-separator > ${sample}.hydrogenase.faa #first command converts a multiline fasta to a singleline fasta
+done
 ```
