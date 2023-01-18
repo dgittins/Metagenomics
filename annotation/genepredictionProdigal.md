@@ -32,7 +32,7 @@ done
 ```
 
 \
-4. Append bin name and number to each sequence
+4. **Optional** - Append bin name and number to each sequence; useful for parsing/processing annotations
 
 ```bash
 for f in *_proteins.faa
