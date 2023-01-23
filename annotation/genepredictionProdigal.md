@@ -15,7 +15,7 @@ $ conda activate prodigal
 ```bash
 $ cd annotation/
 $ cat ../binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list #concatenate the lists of good bins
-$ awk 'NR > 1{ print $1 }' dastool_goodbins.list | xargs -I{} sh -c 'ln -s ../binning/dastool/*_DASTool_bins/{}' . #create a sym link to good bins. NB add 'sh -c' to make xargs respect wildcards in searches, otherwise sym link path is literal
+$ awk '{ print $1 }' dastool_goodbins.list | xargs -I{} sh -c 'ln -s ../binning/dastool/*_DASTool_bins/{}' . #create a sym link to good bins. NB add 'sh -c' to make xargs respect wildcards in searches, otherwise sym link path is literal
 ```
 
 \
