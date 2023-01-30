@@ -39,4 +39,12 @@ do
 	sample=$(basename $f _hyddb.hydrogenase.faa)
 	muscle -align ${sample}_hyddb.hydrogenase.faa -output ${sample}_hyddb.hydrogenase.afaa
 done
+
+#The super5 command uses the Super5 algorithm to align sequences. Input must be in FASTA format. By default, a single alignment is generated using default parameters and output is in aligned FASTA format. Super5 is generally used for aligning large sets of sequences where the PPP algorithm (align command) is too slow.
+
+for f in *_hyddb.hydrogenase.faa
+do
+	sample=$(basename $f _hyddb.hydrogenase.faa)
+	muscle -super5 ${sample}_hyddb.hydrogenase.faa -output ${sample}_hyddb.hydrogenase.afaa
+done
 ```
