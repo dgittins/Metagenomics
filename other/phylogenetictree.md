@@ -48,7 +48,15 @@ $ cat ../goodMAGs/*_proteins.faa | awk '/^>/ {printf("\n%s\n",$0);next; } { prin
 
 
 \
-4. Add nuoA sequence to each hydrogenase sequnce file
+4. Add nuoA sequence to each hydrogenase sequence file
+
+```bash
+$ cat nuoA.fasta >> Fe_hyddb.hydrogenase.faa
+$ cat nuoA.fasta >> FeFe_hyddb.hydrogenase.faa
+$ cat nuoA.fasta >> NiFeGroup1_hyddb.hydrogenase.faa
+$ cat nuoA.fasta >> NiFeGroup2_hyddb.hydrogenase.faa
+...
+```
 
 \
 5. Align sequences using MUSCLE
