@@ -46,8 +46,12 @@ $ cat ../goodMAGs/*_proteins.faa | awk '/^>/ {printf("\n%s\n",$0);next; } { prin
 \
 3. Download nuoA sequence from [KEGG](https://www.genome.jp/entry/eco:b2288) - https://www.genome.jp/entry/K00330 - to use as an outgroup for hydrogenase trees (nuoA, NADH-quinone oxidoreductase subunit A, shares high sequence identity with many hydrogenases, but is not a hydrogenase) 
 
+
 \
-4. Align sequences using MUSCLE
+4. Add nuoA sequence to each hydrogenase sequnce file
+
+\
+5. Align sequences using MUSCLE
 
 ```bash
 #The super5 command uses the Super5 algorithm to align sequences. Super5 is generally used for aligning large sets of sequences where the PPP algorithm (align command) is too slow.
@@ -63,3 +67,13 @@ do
 	muscle -align ${sample}_hyddb.hydrogenase.faa -output ${sample}_hyddb.hydrogenase.afaa
 done
 ```
+
+\
+5. #Rename sequences by removing everything after the first space in the header (RAxML-NG will fail without this step)
+```bash
+sed '/^>/ s/ .*//' nuoA.fasta > nuoA_rename.fasta
+sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
+sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
+sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
+sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
+...
