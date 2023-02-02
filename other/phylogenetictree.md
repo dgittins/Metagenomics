@@ -1,7 +1,7 @@
 # Align sequences and create a phylogenetic tree
 
 ## Align sequences using [MUSCLE](http://www.drive5.com/muscle/muscle_userguide3.8.html)
-## Create a phylogenetic tree using raxml 
+## Create a phylogenetic tree using [RAxML Next Generation](https://github.com/amkozlov/raxml-ng) 
 
 1. Create a conda environment with MUSCLE installed
 
@@ -46,11 +46,8 @@ $ cat ../goodMAGs/*_proteins.faa | awk '/^>/ {printf("\n%s\n",$0);next; } { prin
 \
 3. Download nuoA sequence from [KEGG](https://www.genome.jp/entry/eco:b2288) - https://www.genome.jp/entry/K00330 - to use as an outgroup for hydrogenase trees (selected as nuoA, NADH-quinone oxidoreductase subunit A, shares high sequence identity with many hydrogenases, but is not a hydrogenase) 
 
-
-
-
 \
-4. Run MUSCLE
+4. Align sequences using MUSCLE
 
 ```bash
 for f in *_hyddb.hydrogenase.faa
@@ -60,7 +57,6 @@ do
 done
 
 #The super5 command uses the Super5 algorithm to align sequences. Input must be in FASTA format. By default, a single alignment is generated using default parameters and output is in aligned FASTA format. Super5 is generally used for aligning large sets of sequences where the PPP algorithm (align command) is too slow.
-
 for f in *_hyddb.hydrogenase.faa
 do
 	sample=$(basename $f _hyddb.hydrogenase.faa)
