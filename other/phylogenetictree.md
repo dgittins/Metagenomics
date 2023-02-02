@@ -77,7 +77,7 @@ done
 ```
 
 \
-5. #Rename sequences by removing everything after the first space in the header (RAxML-NG will fail without this step)
+6. Rename sequences by removing everything after the first space in the header (RAxML-NG will fail without this step)
 ```bash
 sed '/^>/ s/ .*//' nuoA.fasta > nuoA_rename.fasta
 sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
@@ -85,3 +85,19 @@ sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogen
 sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
 sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
 ...
+
+\
+7. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
+
+```bash
+#individual
+raxml-ng --all --msa Fe_hyddb.hydrogenase.rename.afaa --model LG --prefix T15 --seed 2 --threads 2 --bs-metric fbp,tbe
+
+#as a loop
+for f in *_hyddb.hydrogenase.rename.afaa
+do
+	sample=${basname f _hyddb.hydrogenase.rename.afaa)
+	raxml-ng --all --msa ${sample}_hyddb.hydrogenase.rename.afaa --model LG --prefix ${sample} --seed 2 --threads 20 --bs-metric fbp,tbe
+done
+```
+
