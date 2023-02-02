@@ -85,6 +85,8 @@ sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogen
 sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
 sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
 ...
+```
+
 
 \
 7. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
