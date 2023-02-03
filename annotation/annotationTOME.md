@@ -23,7 +23,7 @@ $ rm v1.0.0.tar.gz
 \
 3. Install Tome
 
-***VERY IMPORTANT*** manually change <from sklearn.externals import joblib> to <import joblib> on line 23 of ~/software/software/tome/Tome-1.0.0/tome/tome.py
+***VERY IMPORTANT*** manually change 'from sklearn.externals import joblib' to 'import joblib' on line 23 of ~/software/software/tome/Tome-1.0.0/tome/tome.py
     
 ```bash
 $ pip install -e Tome-1.0.0/
