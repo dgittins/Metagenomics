@@ -62,7 +62,7 @@ $ cat nuoA.fasta >> NiFeGroup2_hyddb.hydrogenase.faa
 5. Align sequences using MUSCLE
 
 ```bash
-#The super5 command uses the Super5 algorithm to align sequences. Super5 is generally used for aligning large sets of sequences where the PPP algorithm (align command) is too slow.
+#The super5 command uses the Super5 algorithm to align sequences. Super5 is generally used for aligning large sets of sequences (>1000) where the PPP algorithm (align command) is too slow.
 for f in *_hyddb.hydrogenase.faa
 do
 	sample=$(basename $f _hyddb.hydrogenase.faa)
