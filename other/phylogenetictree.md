@@ -79,11 +79,10 @@ done
 \
 6. Rename sequences by removing everything after the first space in the header (RAxML-NG will fail without this step)
 ```bash
-sed '/^>/ s/ .*//' nuoA.fasta > nuoA_rename.fasta
-sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
-sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
-sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
-sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogenase.rename.afaa
+sed -i '/^>/ s/ .*//' Fe_hyddb.hydrogenase.afaa
+sed -i '/^>/ s/ .*//' FeFe_hyddb.hydrogenase.afaa
+sed -i '/^>/ s/ .*//' NiFeGroup1_hyddb.hydrogenase.afaa
+sed -i '/^>/ s/ .*//' NiFeGroup2_hyddb.hydrogenase.afaa
 ...
 ```
 
@@ -93,13 +92,16 @@ sed '/^>/ s/ .*//' NiFeGroup4_hyddb.hydrogenase.afaa > NiFeGroup4_hyddb.hydrogen
 
 ```bash
 #individual
-raxml-ng --all --msa Fe_hyddb.hydrogenase.rename.afaa --model LG --prefix T15 --seed 2 --threads 2 --bs-metric fbp,tbe
+raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG --prefix Fe --seed 1 --threads 20
 
 #as a loop
-for f in *_hyddb.hydrogenase.rename.afaa
+for f in *_hyddb.hydrogenase.afaa
 do
-	sample=${basname f _hyddb.hydrogenase.rename.afaa)
-	raxml-ng --all --msa ${sample}_hyddb.hydrogenase.rename.afaa --model LG --prefix ${sample} --seed 2 --threads 20 --bs-metric fbp,tbe
+	sample=$(basename $f _hyddb.hydrogenase.afaa)
+	mkdir ${sample}_raxml
+	cd ${sample}_raxml/
+	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG --prefix ${sample} --seed 1 --threads 20
+	cd ../
 done
 ```
 
