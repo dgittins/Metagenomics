@@ -43,4 +43,7 @@ do
     sample=$(basename $f _proteins.faa)
     tome predOGT --fasta ../${sample}_proteins.faa -o ${sample}_ogt.txt -p 20    
 done
+
+#concatenate individual *_ogt.text files
+$ awk 'FNR > 1' *.txt > all_ogt.txt #second line of each file
 ```
