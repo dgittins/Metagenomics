@@ -29,6 +29,7 @@ $ rm v1.0.0.tar.gz
 #then run the install commands
 $ pip install -e Tome-1.0.0/
 $ pip3 install joblib #not detailed in the GitHub instructions
+$ python3 -m pip install -U scikit-learn #not detailed in the GitHub instructions
 ```
 
 \
