@@ -95,6 +95,7 @@ sed -i '/^>/ s/ .*//' NiFeGroup2_hyddb.hydrogenase.afaa
 $ modeltest-ng -d aa -i Fe_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 $ modeltest-ng -d aa -i FeFe_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 $ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
+...
 ```
 
 \
