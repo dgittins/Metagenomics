@@ -102,7 +102,7 @@ $ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 
 ```bash
 #individual
-raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG+G4 --prefix Fe --seed 1 --threads 20
+raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG+G4 --prefix Fe --seed 1 --threads 20 --bs-trees 100
 
 #as a loop
 for f in *_hyddb.hydrogenase.afaa
@@ -110,7 +110,7 @@ do
 	sample=$(basename $f _hyddb.hydrogenase.afaa)
 	mkdir ${sample}_raxml
 	cd ${sample}_raxml/
-	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG+G4 --prefix ${sample} --seed 1 --threads 20
+	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG+G4 --prefix ${sample} --seed 1 --threads 20 --bs-trees 100
 	cd ../
 done
 ```
