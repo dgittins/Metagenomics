@@ -1,6 +1,7 @@
 # Align sequences and create a phylogenetic tree
 
 ## Align sequences using [MUSCLE](http://www.drive5.com/muscle/muscle_userguide3.8.html)
+## Select the best-fit model of evolution using [ModelTest-NG](https://github.com/ddarriba/modeltest)
 ## Create a phylogenetic tree using [RAxML Next Generation](https://github.com/amkozlov/raxml-ng) 
 
 1. Create a conda environment with MUSCLE installed
@@ -86,13 +87,22 @@ sed -i '/^>/ s/ .*//' NiFeGroup2_hyddb.hydrogenase.afaa
 ...
 ```
 
+\
+7. Use [ModelTest-NG](https://github.com/ddarriba/modeltest) for selecting the best-fit model of evolution for the protein alignment
+
+```bash
+#check output for 'Commands:', e.g., 'raxml-ng --msa Fe_hyddb.hydrogenase.afaa --model LG+G4'
+$ modeltest-ng -d aa -i Fe_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
+$ modeltest-ng -d aa -i FeFe_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
+$ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
+```
 
 \
-7. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
+8. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
 
 ```bash
 #individual
-raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG --prefix Fe --seed 1 --threads 20
+raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG+G4 --prefix Fe --seed 1 --threads 20
 
 #as a loop
 for f in *_hyddb.hydrogenase.afaa
@@ -100,7 +110,7 @@ do
 	sample=$(basename $f _hyddb.hydrogenase.afaa)
 	mkdir ${sample}_raxml
 	cd ${sample}_raxml/
-	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG --prefix ${sample} --seed 1 --threads 20
+	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG+G4 --prefix ${sample} --seed 1 --threads 20
 	cd ../
 done
 ```
