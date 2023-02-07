@@ -45,7 +45,7 @@ $ fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass
 
 #input for fasterq-dump is a list of accessions, e.g.
 $ fasterq-dump sample1.sra --outdir . --threads 20 --split-3 --skip-technical
-$ cat ../SraAccList.csv | xargs fasterq-dump --outdir . --threads 20 --split-3 --skip-technical
+$ cat ../SraAccList.csv | xargs fasterq-dump --outdir . --threads 20 --split-3 --skip-technical #NB: there is no gzip flag using fasterq-dump, files can be compressed after download
 ```
 
 Commands to reduce stored data volume
