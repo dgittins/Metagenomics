@@ -42,7 +42,10 @@ $ prefetch --option-file SraAccList.txt
 ```bash
 $ mkdir fastq
 $ fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip *.sra #command can be run on multiple .sra files
-$ fasterq-dump --outdir ./fastq --threads 20 *.sra #command can be multithreaded, but not run on multiple .sra files
+
+#input for fasterq-dump is a list of accessions, e.g.
+$ fasterq-dump sample1.sra --outdir . --threads 20 --split-3 --skip-technical
+$ cat ../SraAccList.csv | xargs fasterq-dump --outdir . --threads 20 --split-3 --skip-technical
 ```
 
 Commands to reduce stored data volume
