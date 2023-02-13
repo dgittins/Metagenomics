@@ -20,7 +20,7 @@ conda activate megahit
 for f in *_pass_1.qc.fastq
 do
   sample=$(basename $f _pass_1.qc.fastq)
-  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 40 -m 0.5 --min-contig-len 500 -o ${sample}_megahit.assembly  >& ${sample}_megahit.log.txt
+  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 40 -m 0.5 --min-contig-len 500 -o ${sample}_megahit.assembly >& ${sample}_megahit.log.txt
 done
 
 #Co-assembly
