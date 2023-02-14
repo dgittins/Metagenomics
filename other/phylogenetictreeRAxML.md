@@ -4,6 +4,7 @@
 ## Select the best-fit model of evolution using [ModelTest-NG](https://github.com/ddarriba/modeltest)
 ## Create a phylogenetic tree using [RAxML Next Generation](https://github.com/amkozlov/raxml-ng) 
 
+
 1. Extract sequences from a hydrogenase group
 
 ```bash
@@ -38,7 +39,6 @@ $ cat ../goodMAGs/*_proteins.faa | awk '/^>/ {printf("\n%s\n",$0);next; } { prin
 
 \
 2. Download nuoA sequence from [KEGG](https://www.genome.jp/entry/eco:b2288) - https://www.genome.jp/entry/K00330 - to use as an outgroup for hydrogenase trees (nuoA, NADH-quinone oxidoreductase subunit A, shares high sequence identity with many hydrogenases, but is not a hydrogenase) 
-
 
 \
 3. Add nuoA sequence to each hydrogenase sequence file
