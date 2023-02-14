@@ -4,15 +4,7 @@
 ## Select the best-fit model of evolution using [ModelTest-NG](https://github.com/ddarriba/modeltest)
 ## Create a phylogenetic tree using [FastTree](http://www.microbesonline.org/fasttree/) 
 
-1. Create a conda environment with MUSCLE installed
-
-```bash
-$ conda create -n muscle -c bioconda muscle
-$ conda activate muscle
-```
-
-\
-2. Extract sequences from a hydrogenase group
+1. Extract sequences from a hydrogenase group
 
 ```bash
 #parse hydDB results according to hydrogenase group
@@ -45,11 +37,10 @@ $ cat ../goodMAGs/*_proteins.faa | awk '/^>/ {printf("\n%s\n",$0);next; } { prin
 ```
 
 \
-3. Download nuoA sequence from [KEGG](https://www.genome.jp/entry/eco:b2288) - https://www.genome.jp/entry/K00330 - to use as an outgroup for hydrogenase trees (nuoA, NADH-quinone oxidoreductase subunit A shares high sequence identity with many hydrogenases, but is not a hydrogenase) 
-
+2. Download nuoA sequence from [KEGG](https://www.genome.jp/entry/eco:b2288) - https://www.genome.jp/entry/K00330 - to use as an outgroup for hydrogenase trees (nuoA, NADH-quinone oxidoreductase subunit A, shares high sequence identity with many hydrogenases, but is not a hydrogenase) 
 
 \
-4. Add nuoA sequence to each hydrogenase sequence file
+3. Add nuoA sequence to each hydrogenase sequence file
 
 ```bash
 $ cat nuoA.fasta >> Fe_hyddb.hydrogenase.faa
@@ -57,6 +48,14 @@ $ cat nuoA.fasta >> FeFe_hyddb.hydrogenase.faa
 $ cat nuoA.fasta >> NiFeGroup1_hyddb.hydrogenase.faa
 $ cat nuoA.fasta >> NiFeGroup2_hyddb.hydrogenase.faa
 ...
+```
+
+\
+4. Create a conda environment with MUSCLE installed
+
+```bash
+$ conda create -n muscle -c bioconda muscle
+$ conda activate muscle
 ```
 
 \
