@@ -88,7 +88,15 @@ sed -i '/^>/ s/ .*//' NiFeGroup2_hyddb.hydrogenase.afaa
 ```
 
 \
-7. Use [ModelTest-NG](https://github.com/ddarriba/modeltest) for selecting the best-fit model of evolution for the protein alignment
+7. Create a conda environment with ModelTest-NG and RAxML-NG installed
+
+```bash
+$ conda create -n raxml -c bioconda modeltest-ng raxml-ng
+$ conda activate raxml
+```
+
+\
+8. Use [ModelTest-NG](https://github.com/ddarriba/modeltest) for selecting the best-fit model of evolution for the protein alignment
 
 ```bash
 #check output for 'Commands:', e.g., 'raxml-ng --msa Fe_hyddb.hydrogenase.afaa --model LG+G4'
@@ -99,7 +107,7 @@ $ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 ```
 
 \
-8. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
+9. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
 
 ```bash
 #individual
