@@ -4,6 +4,7 @@
 ## Select the best-fit model of evolution using [ModelTest-NG](https://github.com/ddarriba/modeltest)
 ## Create a phylogenetic tree using [FastTree](http://www.microbesonline.org/fasttree/) 
 
+
 1. Extract sequences from a hydrogenase group
 
 ```bash
@@ -87,6 +88,14 @@ sed -i '/^>/ s/ .*//' NiFeGroup2_hyddb.hydrogenase.afaa
 ```
 
 \
+7. Create a conda environment with FastTree installed
+
+```bash
+$ conda create -n fasttree -c bioconda fasttree
+$ conda activate fasttree
+```
+
+\
 7. Use [ModelTest-NG](https://github.com/ddarriba/modeltest) for selecting the best-fit model of evolution for the protein alignment
 
 ```bash
@@ -98,20 +107,17 @@ $ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 ```
 
 \
-8. Infer maximum-likelihood (ML) phylogenetic trees using RAxML-NG
+8. Infer maximum-likelihood (ML) phylogenetic trees using FastTree
 
 ```bash
 #individual
-raxml-ng --all --msa Fe_hyddb.hydrogenase.afaa --model LG+G4 --prefix Fe --seed 1 --threads 20 --bs-trees 100
+FastTree -spr 4 -lg Fe_hyddb.hydrogenase.afaa > Fe_fasttree.tre
 
 #as a loop
 for f in *_hyddb.hydrogenase.afaa
 do
 	sample=$(basename $f _hyddb.hydrogenase.afaa)
-	mkdir ${sample}_raxml
-	cd ${sample}_raxml/
-	raxml-ng --all --msa ../${sample}_hyddb.hydrogenase.afaa --model LG+G4 --prefix ${sample} --seed 1 --threads 20 --bs-trees 100
-	cd ../
+	FastTree -spr 4 -lg ${sample}_hyddb.hydrogenase.afaa > ${sample}_fasttree.tre
 done
 ```
 
