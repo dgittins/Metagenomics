@@ -49,3 +49,19 @@ do
 done
 ```
 
+\
+5. Caluclate assembled sequence statistics using a custom perl script written by the bioinformatics wiz [Xiaoli Dong](https://github.com/xiaoli-dong)
+
+```bash
+$ wget https://raw.githubusercontent.com/xiaoli-dong/metagenomics_crash_course/master/bin/seqStats.pl
+
+for dir in */
+do
+	cd "$dir"
+	sample=$(basename "$PWD" | cut -d\_ -f1)
+	perl ../seqStats.pl -f fasta -s ${sample}_final.contigs.fa > ${sample}_final.contigs.seqStats
+	cd ../
+done
+
+$ grep "" ./*/*_final.contigs.seqStats #useful for copying/parsing the output
+```
