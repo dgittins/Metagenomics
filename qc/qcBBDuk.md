@@ -99,5 +99,7 @@ do
 	sample=$(basename $f .fastq.gz)
 	perl seqStats.pl -f fastq -s ${sample}.fastq.gz > ${sample}.seqStats
 done
+
+$ grep "" *_pass_1.seqStats #useful for copying/parsing the output
 ```
 
