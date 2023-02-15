@@ -89,7 +89,7 @@ done
 ```
 
 \
-5. Caluclate sequence statistics using a custom perl script written by the bioinformatics wiz [Xiaoli Dong](https://github.com/xiaoli-dong)
+6. Caluclate sequence statistics using a custom perl script written by the bioinformatics wiz [Xiaoli Dong](https://github.com/xiaoli-dong)
 
 ```bash
 $ wget https://raw.githubusercontent.com/xiaoli-dong/metagenomics_crash_course/master/bin/seqStats.pl
