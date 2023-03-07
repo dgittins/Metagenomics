@@ -47,15 +47,17 @@ find . \( -name "kmer" -o -name "contig-*" -o -name "align-*" -o -name "graph-*"
 ```
 
 \
-5. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories, as well as each assembled contig within the respective .fa files.
+5. Add a prefix of the sample name to each of the 'contig.fa' and 'scaffold.fa' files in their respective directories, as well as each assembled contig and scaffold within the respective .fa files.
 
 ```bash
 for dir in */
 do
 	cd "$dir"
 	sample=$(basename "$PWD" | cut -d\_ -f1) #create a variable of the sample name from the directory name
-	mv final.contigs.fa ${sample}_final.contigs.fa #add sample name to file name
+	mv contig.fa ${sample}_final.contigs.fa #add sample name to contig file name
+	mv scaffold.fa ${sample}_final.scaffolds.fa #add sample name to scaffold file name
 	sed -i "s/>/>${sample}_/g" ${sample}_final.contigs.fa #add sample name to the beginning of each contig
+	sed -i "s/>/>${sample}_/g" ${sample}_final.scaffolds.fa #add sample name to the beginning of each scaffold
 	cd ../
 done
 ```
@@ -71,6 +73,7 @@ do
 	cd "$dir"
 	sample=$(basename "$PWD" | cut -d\_ -f1)
 	perl ../seqStats.pl -f fasta -s ${sample}_final.contigs.fa > ${sample}_final.contigs.seqStats
+	perl ../seqStats.pl -f fasta -s ${sample}_final.scaffolds.fa > ${sample}_final.scaffolds.seqStats
 	cd ../
 done
 
