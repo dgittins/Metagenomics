@@ -39,6 +39,9 @@ do
   sample=$(basename $f .pe.fa)
   idba_ud -r ${sample}.pe.fa -o ${sample}_idba.assembly --num_threads 40 --min_contig 500 --pre_correction >& ${sample}_idba.assembly.log.txt
 done
+
+#Remove unnecessary files from output directories:
+find . \( -name "kmer" -o -name "contig-*" -o -name "align-*" -o -name "graph-*" -o -name "local-*" \) -delete #use '-a -print' instead of -delete' to view files before deleting 
 ```
 
 \
