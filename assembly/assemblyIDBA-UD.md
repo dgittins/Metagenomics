@@ -37,7 +37,7 @@ done
 for f in *.pe.fa
 do
   sample=$(basename $f .pe.fa)
-  idba_ud -r ${sample}.pe.fa -o ${sample}_idba.assembly --num_threads 40 --min_contig 500 --pre_correction
+  idba_ud -r ${sample}.pe.fa -o ${sample}_idba.assembly --num_threads 40 --min_contig 500 --pre_correction >& ${sample}_idba.assembly.log.txt
 done
 ```
 
