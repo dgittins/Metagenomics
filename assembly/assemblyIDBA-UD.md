@@ -5,38 +5,44 @@
 1. Install IDBA-UD
 
 ```bash
-$ conda create -n megahit -c bioconda megahit
-$ conda activate megahit
+$ conda create -n idba -c bioconda idba
+$ conda activate idba
 ```
 
 \
 2. Navigate to a working directory and create links to quality controlled reads
 
 ```bash
-$ cd assembly/megahit/
+$ cd assembly/idba/
 $ ln -s ../../qc/*.qc.fastq .
 ```
 
 \
-3. Run MEGAHIT
+3. Convert individual forward and reverse quality-controlled FASTQ read files into paired-end FASTA read files
+
+IDBA series assemblers accept FASTA format reads. IDBA-UD, IDBA-Hybrid and IDBA-Tran require paired-end reads stored in the same FASTA file.
 
 ```bash
-#Individual assembly
 for f in *_pass_1.qc.fastq
 do
-  sample=$(basename $f _pass_1.qc.fastq)
-  megahit -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -t 20 -m 0.5 --min-contig-len 500 -o ${sample}_megahit.assembly  >& ${sample}_megahit.log.txt
+   sample=$(basename $f _pass_1.qc.fastq)
+   fq2fa --merge ${sample}_pass_1.qc.fastq ${sample}_pass_2.qc.fastq ${sample}.pe.fa
 done
-
-#Co-assembly
-reads1=$(echo `ls ${prefix}*_pass_1.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of forward reads
-reads2=$(echo `ls ${prefix}*_pass_2.qc.fastq` | sed 's/ /,/g') #create a comma seperated list of reverse reads
-
-megahit -1 ${reads1} -2 ${reads2} -t 20 -m 0.5 --min-contig-len 500 -o <study>_megahit.coassembly >& <study>_megahit.coassembly.log.txt
 ```
 
 \
-4. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories, as well as each assembled contig within the respective .fa files.
+4. Run IDBA-UD
+
+```bash
+for f in *.pe.fa
+do
+  sample=$(basename $f .pe.fa)
+  idba_ud -r ${sample}.pe.fa -o ${sample}_idba.assembly --num_threads 40 --min_contig 500 --pre_correction
+done
+```
+
+\
+5. Add a prefix of the sample name to each of the 'final.contigs.fa' files in their respective directories, as well as each assembled contig within the respective .fa files.
 
 ```bash
 for dir in */
@@ -50,7 +56,7 @@ done
 ```
 
 \
-5. Caluclate assembled sequence statistics using a custom perl script written by the bioinformatics wiz [Xiaoli Dong](https://github.com/xiaoli-dong)
+6. Caluclate assembled sequence statistics using a custom perl script written by the bioinformatics wiz [Xiaoli Dong](https://github.com/xiaoli-dong)
 
 ```bash
 $ wget https://raw.githubusercontent.com/xiaoli-dong/metagenomics_crash_course/master/bin/seqStats.pl
