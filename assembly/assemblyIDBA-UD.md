@@ -2,6 +2,8 @@
 
 ## [IDBA-UD](https://github.com/loneknightpy/idba)
 
+* IDBA performs scaffolding as a default
+
 1. Install IDBA-UD
 
 ```bash
