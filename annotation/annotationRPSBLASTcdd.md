@@ -46,6 +46,8 @@ a. Parse out useful information from RPS-BLAST output, e.g., names/accessions of
 ```bash
 cd /annotation/hydrogenase/
 
+# Use -w option in grep  select only those lines containing matches that form whole words.  The test is that the matching substring must either be at the beginning of the line, or preceded by a non-word constituent character, i.e., " hydrogenase " or "[NiFe]hydrogenase."
+
 for f in ../cdd/*.cdd.blastout
 do 
 	sample=$(basename $f .cdd.blastout)
