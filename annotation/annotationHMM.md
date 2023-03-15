@@ -43,10 +43,15 @@ do
 	hmmscan --tblout ${sample}.tblout --domtblout ${sample}.domtblout --noali --notextw --cut_tc --cpu 40 /work/lab/ReferenceDatabases/Pfam/Pfam-A.hmm ../${sample}_proteins.faa > ${sample}.hmmscan.tc.out
 done
 
-#hmmsearch
+#hmmsearch against multiple (non-concatenated) HMMs 
 for f in ../*_proteins.faa
 do
 	sample=$(basename $f _proteins.faa)
-	hmmsearch --domT 0 --tblout ${sample}.tblout /work/lab/ReferenceDatabases/hydrogenaseHMM/Hydrogenase_Group_1.hmm ../${sample}_proteins.faa
+	
+	for h in /work/lab/ReferenceDatabases/hydrogenaseHMM/hydb*.hmm
+	do
+		name=$(basename $h .hmm)
+		hmmsearch --cut_tc --tblout ${sample}.hmmsearch.${name}.tblout /work/lab/ReferenceDatabases/hydrogenaseHMM/${name}.hmm ../${sample}_proteins.faa
+	done
 done
 ```
