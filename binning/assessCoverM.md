@@ -22,13 +22,20 @@ $ cd binning/dastool/
 ```bash
 for dir in *_DASTool_bins/
 do
+	if [ "$dir" == "coassembly_DASTool_bins" ] ; then
+              continue;
+    	fi
+	
 	cd "$dir"
-	sample=$(echo "$dir" | cut -d\_ -f1) #create a variable of the sample name from the directory name
-	mkdir ${sample}_coverm #create an output directory
+	sample=$(echo "$dir" | cut -d\_ -f1)
 	
+	for f in *.fa
+	do
+		coverm genome -1 ../../../qc/${sample}_pass_1.qc.fastq -2 ../../../qc/${sample}_pass_2.qc.fastq -d . -x .fa -o ${sample}_coverm.out -t 40
+	done
 	
-	
-	checkm2 predict --threads 20 --input . -x fa --output-directory ./${sample}_checkm2 #run CheckM2 script
 	cd ../
 done
+
+# update coassembly name
 ```
