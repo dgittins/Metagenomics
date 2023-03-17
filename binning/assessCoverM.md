@@ -22,7 +22,7 @@ $ cd binning/dastool/
 ```bash
 for dir in *_DASTool_bins/
 do
-	if [ "$dir" == "coassembly_DASTool_bins" ] ; then
+	if [ "$dir" == Christman_DASTool_bins/ ] ; then
               continue;
     	fi
 	
