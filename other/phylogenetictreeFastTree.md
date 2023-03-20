@@ -110,6 +110,9 @@ $ modeltest-ng -d aa -i NiFeGroup1_hyddb.hydrogenase.afaa -p 8 -r 1 -T raxml
 8. Infer maximum-likelihood (ML) phylogenetic trees using FastTree
 
 ```bash
+# use -lg -- Le-Gascuel 2008 model based on raxml output
+# use -gamma -- after optimizing the tree under the CAT approximation, rescale the lengths to optimize the Gamma20 likelihood
+
 #individual
 FastTree -spr 4 -lg Fe_hyddb.hydrogenase.afaa > Fe_fasttree.tre
 
