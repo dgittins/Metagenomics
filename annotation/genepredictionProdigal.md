@@ -27,7 +27,7 @@ $ cd annotation/
 for f in *.fa
 do 
     sample=$(basename $f .fa)
-    prodigal -i ${sample}.fa -o ${sample}_gene.coords.gbk -a ${sample}_proteins.faa -d ${sample}_nucleotides.fa -p meta
+    prodigal -i ${sample}.fa -a ${sample}_proteins.faa -d ${sample}_nucleotides.fa -p meta
 done
 ```
 
