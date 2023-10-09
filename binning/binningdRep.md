@@ -7,28 +7,26 @@
 ```bash
 $ conda create -n dRep -c bioconda dRep
 $ conda activate dRep
+
+$ dRep check_dependencies
 ```
 
 \
-2. Navigate to a working directory and create links to assembled contigs and copies of contigs to bin tables
+2. Navigate to a working directory and create links to genome bins
 
 ```bash
-$ cd binning/dastool/
-$ ln -s ../../assembly/megahit/*/*_final.contigs.fa .
-$ cp ../*/*.contigs2bin.tsv .
-
-#Concoct contigs2bin.tsv may need to be editted to remove "flag=" "multi=" and "len=" values from contig names if they exist
-$ gawk -i inplace '{print $1 "\t" $5}' *_concoct.contigs2bin.tsv
+$ cd binning/drep/
+$ ln -s /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Christman2020/binning/dastool/*_DASTool_bins/*[0-9].fa .
 ```
 
 \
-3. Run DAS Tool
+3. Run dRep (default 95% ANI, 10% minimum alignment coverage)
 
 ```bash
 for f in *_final.contigs.fa 
 do
 	sample=$(basename $f _final.contigs.fa)
-	DAS_Tool -i ${sample}_concoct.contigs2bin.tsv,${sample}_maxbin.contigs2bin.tsv,${sample}_metabat.contigs2bin.tsv -c ${sample}_final.contigs.fa -o ${sample} --write_bin_evals --write_bins --write_unbinned -t 20 >& ${sample}_dastool.log.txt
+	dRep dereplicate drep_out -g path/to/genomes/*.fasta
 done
 ```
 
