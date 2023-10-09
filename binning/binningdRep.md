@@ -9,6 +9,8 @@ $ conda create -n dRep -c bioconda dRep
 $ conda activate dRep
 
 $ dRep check_dependencies
+
+# 'centrifuge' and 'nsimscan' are not required
 ```
 
 \
@@ -16,19 +18,12 @@ $ dRep check_dependencies
 
 ```bash
 $ cd binning/drep/
-$ ln -s /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Christman2020/binning/dastool/*_DASTool_bins/*[0-9].fa .
+$ ln -s ../dastool/*_DASTool_bins/*[0-9].fa .
 ```
 
 \
 3. Run dRep (default 95% ANI, 10% minimum alignment coverage)
 
 ```bash
-for f in *_final.contigs.fa 
-do
-	sample=$(basename $f _final.contigs.fa)
-	dRep dereplicate drep_out -g path/to/genomes/*.fasta
-done
+dRep dereplicate drep_out -g *.fa
 ```
-
-
-dRep dereplicate output_directory -g path/to/genomes/*.fasta
