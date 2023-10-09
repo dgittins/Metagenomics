@@ -4,7 +4,7 @@
 #SBATCH --mail-type=END,FAIL,INVALID_DEPEND,REQUEUE,STAGE_OUT
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=40
 #SBATCH --mem=50GB
 #SBATCH --time=05:00:00
 #SBATCH --partition=cpu2019,apophis-bf,pawson-bf,razi-bf
