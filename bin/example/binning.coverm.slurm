@@ -5,8 +5,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=40
-#SBATCH --mem=50GB
-#SBATCH --time=05:00:00
+#SBATCH --mem=100GB
+#SBATCH --time=24:00:00
 #SBATCH --partition=cpu2019,apophis-bf,pawson-bf,razi-bf
 
 ###### Set environment variables ######
@@ -16,8 +16,12 @@ conda activate coverm
 
 ###### Run your script ######
 
-for f in *.fa
+for f in *_pass_1.qc.fastq
 do
-	coverm genome -1 *_pass_1.qc.fastq -2 *_pass_2.qc.fastq -d . -x .fa --min-read-percent-identity 95 --min-read-aligned-percent 75  --min-covered-fraction 0 -m relative_abundance mean trimmed_mean coverage_histogram covered_bases variance length count reads_per_base rpkm -o coverm_out.tsv -t 40
+	sample=$(basename $f _pass_1.qc.fastq)
+	coverm genome -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -d . -x .fa -p --min-read-percent-identity 95 --min-read-aligned-percent 75 --min-covered-fraction 0 -m relative_abundance mean trimmed_mean covered_bases variance length count reads_per_base rpkm -o ${sample}.coverm_out.tsv -t 40
 done
 
+##
+echo "Job finished with exit code $? at: `date`"
+##
