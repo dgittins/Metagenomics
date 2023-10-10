@@ -54,7 +54,7 @@ for f in files[1:]:
     # Concatenate the selected column to the result dataframe
     df_result = pd.concat([df_result, df], axis=1)
 
-df_result.to_csv("coverm_abudance.tsv", sep='\t', index=False)
+df_result.to_csv("all.abundance.coverm_out.tsv", sep='\t', index=False)
 
 $ python coverm.concatenation.py
 ```
