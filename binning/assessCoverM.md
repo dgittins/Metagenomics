@@ -32,3 +32,29 @@ do
 	-o coverm_out.tsv -t 40
 done
 ```
+
+\
+4. Concatenate CoverM outputs based on relative abundance
+
+```bash
+$ emacs coverm.concatenation.py
+
+import pandas as pd
+import glob
+
+files = glob.glob('./*.tsv')
+
+# Read the first file and select the first two columns
+df_result = pd.read_csv(files[0], sep='\t', usecols=[0, 1])
+
+# Iterate over the rest of the files and merge the second column
+for f in files[1:]:
+    # Read the file and select the second column
+    df = pd.read_csv(f, sep='\t', usecols=[1])
+    # Concatenate the selected column to the result dataframe
+    df_result = pd.concat([df_result, df], axis=1)
+
+df_result.to_csv("coverm_abudance.tsv", sep='\t', index=False)
+
+$ python coverm.concatenation.py
+```
