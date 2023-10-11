@@ -22,14 +22,10 @@ $ ln -s ../drep/drep_out/dereplicated_genomes/*[0-9].fa .
 3. Run CoverM
 
 ```bash
-for f in *.fa
+for f in *_pass_1.qc.fastq
 do
-	coverm genome -1 *_pass_1.qc.fastq -2 *_pass_2.qc.fastq -d . -x .fa \
-	--min-read-percent-identity 95 \
-	--min-read-aligned-percent 75 \
-	--min-covered-fraction 0 \
-	-m relative_abundance mean trimmed_mean coverage_histogram covered_bases variance length count reads_per_base rpkm \
-	-o coverm_out.tsv -t 40
+	sample=$(basename $f _pass_1.qc.fastq)
+	coverm genome -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -d . -x .fa -p --min-read-percent-identity 95 --min-read-aligned-percent 75 --min-covered-fraction 0 -m relative_abundance mean trimmed_mean covered_bases variance length count reads_per_base rpkm -o ${sample}.coverm_out.tsv -t 40
 done
 ```
 
