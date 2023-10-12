@@ -22,8 +22,12 @@ $ ln -s ../dastool/*_DASTool_bins/*[0-9].fa .
 ```
 
 \
-3. Run dRep (default 95% ANI, 10% minimum alignment coverage)
+3. Run dRep 
 
 ```bash
-dRep dereplicate drep_out -g *.fa
+# 10% minumum genome completeness, 25% maximum genome contamination
+$ dRep dereplicate drep_out -g *.fa -comp 10 -con 25
+
+# Default - 75% minumum genome completeness, 25% maximum genome contamination
+# $ dRep dereplicate drep_out -g *.fa
 ```
