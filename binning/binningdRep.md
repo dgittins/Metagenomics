@@ -27,6 +27,7 @@ $ ln -s ../dastool/*_DASTool_bins/*[0-9].fa .
 ```bash
 # 10% minumum genome completeness, 25% maximum genome contamination
 $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
+^ run dRep with low completeness to identify all unique genomes, then filter by completeness and contamination to identify good quality bins.
 
 # Default - 75% minumum genome completeness, 25% maximum genome contamination
 # $ dRep dereplicate drep_out -g *.fa
