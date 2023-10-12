@@ -28,20 +28,13 @@ $ checkm2 database --setdblocation /home/user/databases/checkm2/CheckM2_database
 3. Navigate to a working directory
 
 ```bash
-# Run checkm2 on non-dereplicated genome bins
 $ cd binning/dastool/
-
----
-
-# Run checkm2 on dereplicated genome bins
-$ cd binning/drep/drep_out/dereplicated_genomes/
 ```
 
 \
 4. Run Checkm2
 
 ```bash
-# Non-dereplicated bins
 for dir in *_DASTool_bins/
 do
 	cd "$dir"
@@ -50,12 +43,6 @@ do
 	checkm2 predict --threads 20 --input . -x fa --output-directory ./${sample}_checkm2 #run CheckM2 script
 	cd ../
 done
-
----
-
-# Dereplicated bins
-checkm2 predict --threads 20 --input . -x fa --output-directory ./drep_checkm2
-
 ```
 
 \
