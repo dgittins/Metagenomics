@@ -44,6 +44,11 @@ $ cd binning/
 
 # 'dastool_goodbins.list' generated in checkm2 workflow
 $ comm -12 <(sort dastool_goodbins.list) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
+
+$ cd Metagenomes/
+
+# Concatenate list of good, representative genomes
+$ cat ./*/binning/*drep_goodbins.list > all.dastool_drep_goodbins.list
 ```
 
 
