@@ -36,31 +36,23 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 ```
 
 
-
-
-
 \
-Other useful code:
+4. Filter to good qulaity genomes
 
 ```bash
-# Create a modified Checkm2 report file
-$ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
+# Write all the "quality_report_good.list" files from checkm2 workflow to a single file
 
-# Copy good quality bins to a new directory
-$ xargs -a quality_report_good.list cp -t ./sample1_goodbins
+for file in /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/*/binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list; do
+    tail -n +2 "$file"
+done > all.quality_report_good.list
 
-# Concatenate lists of good bins in each study
-$ cd binning/
-$ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
+for file in /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Vigneron2017/binning/metabat2/*_metabat.out/*_checkm2/quality_report_good.list; do
+    tail -n +2 "$file"
+done >> all.quality_report_good.list
 
-# Concatenate lists of good bins across all studies
-$ cd metagenomes/
-$ cat */binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
 
-# Count the number of good bins across all studies
-$ cd metagenomes/
-for f in */binning/dastool_goodbins.list
-do
-cat "$f" | wc -l
-done
-```
+$ cat /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/*/binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > all.quality_report_good.list
+$ cat /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Vigneron2017/binning/metabat2/*_metabat.out/*_checkm2/quality_report_good.list >> all.quality_report_good.list
+
+
+
