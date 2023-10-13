@@ -37,15 +37,13 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 
 
 \
-4. Filter to good quality genomes
+4. Identify 'good quality' representative genomes
 
 ```bash
 $ cd binning/
 
+# 'dastool_goodbins.list' generated in checkm2 workflow
 $ comm -12 <(sort dastool_goodbins.list) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
-
-
-
 ```
 
 
