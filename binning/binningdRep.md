@@ -37,22 +37,16 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 
 
 \
-4. Filter to good qulaity genomes
+4. Filter to good quality genomes
 
 ```bash
-# Write all the "quality_report_good.list" files from checkm2 workflow to a single file
+$ cd binning/
 
-for file in /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/*/binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list; do
-    tail -n +2 "$file"
-done > all.quality_report_good.list
-
-for file in /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Vigneron2017/binning/metabat2/*_metabat.out/*_checkm2/quality_report_good.list; do
-    tail -n +2 "$file"
-done >> all.quality_report_good.list
+$ comm -12 <(sort dastool_goodbins.list) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
 
 
-$ cat /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/*/binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > all.quality_report_good.list
-$ cat /work/ebg_lab/gm/gapp/dgittins/ReservoirMicrobiology/Metagenomes/Vigneron2017/binning/metabat2/*_metabat.out/*_checkm2/quality_report_good.list >> all.quality_report_good.list
+
+```
 
 
 
