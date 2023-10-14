@@ -14,8 +14,17 @@ $ conda activate coverm
 
 ```bash
 $ cd binning/coverm/
+
+# Create link to QC read files
 $ ln -s ../../qc/*_pass_*.qc.fastq .
-$ ln -s ../drep/drep_out/dereplicated_genomes/*[0-9].fa .
+
+# Create a link to 'good quality' (-> checkm2), representative (-> dRep) genomes
+while IFS= read -r filename; do
+    ln -s -f "../drep/drep_out/dereplicated_genomes/$filename" ./
+done < ../dastool_drep_goodbins.list
+
+
+$ ln -s -f ../../../dastool_drep_goodbins.list ../drep/drep_out/dereplicated_genomes/ .
 ```
 
 \
