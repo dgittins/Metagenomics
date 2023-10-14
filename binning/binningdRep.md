@@ -20,13 +20,11 @@ $ dRep check_dependencies
 $ cd binning/drep/
 $ ln -s ../dastool/*_DASTool_bins/*.fa .
 $ rm unbinned.fa
-$ rm *.tooShort.fa
 
-# File count
+# Count files (should be equal to total number of DASTool bins)
 $ cd Metagenomes/
 $ ls ./*/binning/drep/*.fa | wc -l
 $ 678
-
 ```
 
 \
@@ -50,14 +48,11 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 ```bash
 $ cd binning/
 
-# 'dastool_goodbins.list' generated in checkm2 workflow
-$ comm -12 <(sort dastool_goodbins.list) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
+# 'quality_report_good.list' generated in checkm2 workflow
+$ comm -12 <(cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list | sort) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
 
 $ cd Metagenomes/
 
 # Concatenate list of good, representative genomes
 $ cat ./*/binning/*drep_goodbins.list > all.dastool_drep_goodbins.list
 ```
-
-
-
