@@ -20,6 +20,11 @@ $ dRep check_dependencies
 $ cd binning/drep/
 $ ln -s ../dastool/*_DASTool_bins/*.fa .
 $ rm unbinned.fa
+
+# Count files (should be equal to total number of DASTool bins)
+$ cd Metagenomes/
+$ ls ./*/binning/drep/*.fa | wc -l
+$ 678
 ```
 
 \
@@ -34,17 +39,6 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 
 # Default - 75% minumum genome completeness, 25% maximum genome contamination
 # $ dRep dereplicate drep_out -g *.fa
-
-
-# Check run file counts
-
-$ cd Metagenomes/
-$ ls ./*/binning/dastool/*_DASTool_bins/*[0-9]*.fa | wc -l
-452
-$ ls ./Vigneron2017/binning/metabat2/*_metabat.out/*[0-9]*.fa | wc -l
-238
-$ ls ./*/binning/drep/*[0-9]*.fa | wc -l
-624
 ```
 
 
