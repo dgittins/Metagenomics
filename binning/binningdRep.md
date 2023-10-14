@@ -50,9 +50,4 @@ $ cd binning/
 
 # 'quality_report_good.list' generated in checkm2 workflow
 $ comm -12 <(cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list | sort) <(find drep/drep_out/dereplicated_genomes/ -name "*.fa" -exec basename {} \; | sort) > dastool_drep_goodbins.list
-
-$ cd Metagenomes/
-
-# Concatenate list of good, representative genomes
-$ cat ./*/binning/*drep_goodbins.list > all.dastool_drep_goodbins.list
 ```
