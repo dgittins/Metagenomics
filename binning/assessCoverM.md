@@ -2,6 +2,8 @@
 
 ## [CoverM](https://github.com/wwood/CoverM)
 
+Run on dereplicated genomes only, otherwise read mappers will be confused as to which of two very similar genomes a read maps to.
+
 1. Install CoverM
 
 ```bash
@@ -23,8 +25,9 @@ while IFS= read -r filename; do
     ln -s -f "../drep/drep_out/dereplicated_genomes/$filename" ./
 done < ../dastool_drep_goodbins.list
 
-
-$ ln -s -f ../../../dastool_drep_goodbins.list ../drep/drep_out/dereplicated_genomes/ .
+# Check file counts
+$ ls *.fa | wc -l
+$ wc -l ../dastool_drep_goodbins.list
 ```
 
 \
