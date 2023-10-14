@@ -14,7 +14,7 @@ $ dRep check_dependencies
 ```
 
 \
-2. Navigate to a working directory and create links to all genome bins
+2. Navigate to a working directory and create links to all (no-quality filtered) genome bins
 
 ```bash
 $ cd binning/drep/
