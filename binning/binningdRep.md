@@ -43,7 +43,7 @@ $ dRep dereplicate drep_out -g *.fa -p 20 -comp 10 -con 25
 
 
 \
-4. Identify 'good quality' representative genomes
+4. Identify 'good quality' (-> checkm2) representative (-> dRep) genomes
 
 ```bash
 $ cd binning/
