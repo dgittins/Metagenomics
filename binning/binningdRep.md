@@ -20,11 +20,13 @@ $ dRep check_dependencies
 $ cd binning/drep/
 $ ln -s ../dastool/*_DASTool_bins/*.fa .
 $ rm unbinned.fa
+$ rm *.tooShort.fa
 
-# Count files (should be equal to total number of DASTool bins)
+# File count
 $ cd Metagenomes/
 $ ls ./*/binning/drep/*.fa | wc -l
 $ 678
+
 ```
 
 \
