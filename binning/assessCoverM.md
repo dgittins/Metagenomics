@@ -64,5 +64,8 @@ for f in files[1:]:
 
 df_result.to_csv("all.abundance.coverm_out.tsv", sep='\t', index=False)
 
+
+$ conda activate python
+
 $ python coverm.concatenation.py
 ```
