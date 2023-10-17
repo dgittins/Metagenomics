@@ -12,7 +12,7 @@ $ conda activate singlem
 ```
 
 \
-2. Navigate to a working directory
+2. Navigate to a working directory and create links to raw Illumina reads
 
 ```bash
 $ cd binning/singlem/
