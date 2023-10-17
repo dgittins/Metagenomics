@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ###### Reserve computing resources ######
 #SBATCH --mail-user=daniel.gittins@ucalgary.ca
 #SBATCH --mail-type=END,FAIL,INVALID_DEPEND,REQUEUE,STAGE_OUT
@@ -16,10 +17,10 @@ conda activate singlem
 
 ###### Run your script ######
 
-for f in *_pass_1.qc.fastq
+for f in ./*_pass_1.fastq.gz
 do
-        sample=$(basename $f _pass_1.qc.fastq)
-        coverm genome -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -d . -x .fa -p --min-read-percent-identity 95 --min-read-aligned-percent 75 --min-covered-fraction 0 -m relative_abundance mean trimmed_mean covered_bases variance length count reads_per_base rpkm -o ${sample}.coverm_out.tsv -t 40
+	sample=$(basename $f _pass_1.fastq.gz)
+	singlem pipe -1 ${sample}_pass_1.fastq.gz -2 ${sample}_pass_1.fastq.gz -p ${sample}.singlem.profile.tsv
 done
 
 ##
