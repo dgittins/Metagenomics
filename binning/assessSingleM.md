@@ -9,8 +9,24 @@ Use the relative abundance of single copy marker genes in reads to estimate the 
 1. Install SingleM
 
 ```bash
-$ conda create -c bioconda --name singlem singlem
+# Install via conda repeatedly failed - used mamba instead
+
+$ conda install mamba -c conda-forge
+$ mamba create -n singlem -c bioconda singlem
+
+$ mamba activate singlem
+
+$ mamba init
+
+<close current terminal and open a new one>
+
 $ conda activate singlem
+
+# Update Krona's taxonomy
+$ ktUpdateTaxonomy.sh
+
+# Check install
+$ singlem -h
 ```
 
 \
