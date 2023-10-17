@@ -17,8 +17,8 @@ $ conda activate coverm
 ```bash
 $ cd binning/coverm/
 
-# Create link to QC read files
-$ ln -s ../../qc/*_pass_*.qc.fastq .
+# Create link to raw read files (not QC, gzip fine)
+$ ln -s ../../fastq/*.fastq.gz .
 
 # Create a link to 'good quality' (-> checkm2), representative (-> dRep) genomes
 while IFS= read -r filename; do
@@ -27,17 +27,19 @@ done < ../dastool_drep_goodbins.list
 
 # Check file counts
 $ ls *.fa | wc -l
+16
 $ wc -l ../dastool_drep_goodbins.list
+16 ../dastool_drep_goodbins.list
 ```
 
 \
 3. Run CoverM
 
 ```bash
-for f in *_pass_1.qc.fastq
+for f in *_pass_1.fastq.gz
 do
-	sample=$(basename $f _pass_1.qc.fastq)
-	coverm genome -1 ${sample}_pass_1.qc.fastq -2 ${sample}_pass_2.qc.fastq -d . -x .fa -p --min-read-percent-identity 95 --min-read-aligned-percent 75 --min-covered-fraction 0 -m relative_abundance mean trimmed_mean covered_bases variance length count reads_per_base rpkm -o ${sample}.coverm_out.tsv -t 40
+	sample=$(basename $f _pass_1.fastq.gz)
+	coverm genome -1 ${sample}_pass_1.fastq.gz -2 ${sample}_pass_2.fastq.gz -d . -x .fa -p --min-read-percent-identity 95 --min-read-aligned-percent 75 --min-covered-fraction 0 -m relative_abundance mean trimmed_mean covered_bases variance length count reads_per_base rpkm -o ${sample}.coverm_out.tsv -t 40
 done
 ```
 
