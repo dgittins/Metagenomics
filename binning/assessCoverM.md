@@ -12,7 +12,7 @@ $ conda activate coverm
 ```
 
 \
-2. Navigate to a working directory
+2. Navigate to a working directory and create links to raw reads
 
 ```bash
 $ cd binning/coverm/
