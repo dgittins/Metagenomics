@@ -12,13 +12,13 @@ $ conda activate coverm
 ```
 
 \
-2. Navigate to a working directory and create links to raw reads
+2. Navigate to a working directory and create links to reads
 
 ```bash
 $ cd binning/coverm/
 
-# Create link to raw read files (not QC, gzip fine)
-$ ln -s ../../fastq/*.fastq.gz .
+# Create link to read files
+$ ln -s ../../qc/*.qc.fastq .
 
 # Create a link to 'good quality' (-> checkm2), representative (-> dRep) genomes
 while IFS= read -r filename; do
