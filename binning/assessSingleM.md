@@ -19,7 +19,7 @@ $ conda activate singlem
 ```bash
 $ cd binning/singlem/
 
-$ ln -s ../../qc/*.fastq.gz .
+$ ln -s ../../fastq/*.fastq.gz .
 ```
 
 \
