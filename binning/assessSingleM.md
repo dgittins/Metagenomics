@@ -7,7 +7,7 @@ Use the relative abundance of single copy marker genes in reads to estimate the 
 1. Install SingleM
 
 ```bash
-$ conda create -n singlem -c bioconda singlem
+$ conda create -c bioconda --name singlem singlem
 $ conda activate singlem
 ```
 
@@ -16,16 +16,12 @@ $ conda activate singlem
 
 ```bash
 $ cd binning/singlem/
+
+$ ln -s ../../qc/*.fastq.gz .
 ```
 
 \
-3. Create links to raw illumina reads (not QC reads)
-
-```bash
-$ ln -s ../../
-
-\
-3. Run Checkm2
+3. Run SingleM
 
 ```bash
 for dir in *_DASTool_bins/
