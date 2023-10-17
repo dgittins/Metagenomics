@@ -1,4 +1,6 @@
-# Profile shotgun metagenomes - estimate the relative abundances of microbial community members
+# Profile shotgun metagenomes 
+
+Estimate the relative abundances of microbial community members
 
 ## [SingleM](https://wwood.github.io/singlem/)
 
