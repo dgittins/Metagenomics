@@ -4,6 +4,8 @@
 
 Run on dereplicated genomes only, otherwise read mappers will be confused as to which of two very similar genomes a read maps to.
 
+Use quality (--> checkm2) representative (--> dRep) genomes.
+
 1. Install CoverM
 
 ```bash
