@@ -66,16 +66,13 @@ Other useful code:
 # Create a modified Checkm2 report file
 $ awk '{ if (NR==1 || ($2 > 50) && ($3 < 10)) { print } }' quality_report.tsv > quality_report_good.tsv #NR==1 means if this is the first record
 
-# Copy good quality bins to a new directory
-$ xargs -a quality_report_good.list cp -t ./sample1_goodbins
-
 # Concatenate lists of good bins in each study
 $ cd binning/
 $ cat dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
 
 # Concatenate lists of good bins across all studies
 $ cd metagenomes/
-$ cat */binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
+$ cat ./*/binning/dastool/*_DASTool_bins/*_checkm2/quality_report_good.list > dastool_goodbins.list
 
 # Count the number of good bins across all studies
 $ cd metagenomes/
