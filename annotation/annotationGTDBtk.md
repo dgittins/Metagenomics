@@ -45,8 +45,3 @@ do
         cd ../
 done
 ```
-
-gtdbtk classify_wf --genome_dir horonobe_genomes/ --out_dir horonobe_genomes/gtdbtk_out/ --mash_db horonobe_genomes/mash_out/  -x .contigs.fa.gz --cpus $SLURM_CPUS_ON_NODE
-
-
---mash_db /work/ebg_lab/referenceDatabases/GTDB_R214/mash
