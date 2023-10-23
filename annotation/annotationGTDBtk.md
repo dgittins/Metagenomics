@@ -43,4 +43,10 @@ do
         gtdbtk classify_wf --genome_dir . --out_dir ${sample}_gtdbtk/ -x fa --mash_db mash_out/ --cpus 20 #run GTDB-Tk classify workflow script
         cd ../
 done
+
+
+# Concatenate results files
+$ cd Metagenomes/
+
+$ cat ./*/binning/dastool/*_DASTool_bins/*_gtdbtk/*.summary.tsv > all.gtdbtk.summary.tsv
 ```
