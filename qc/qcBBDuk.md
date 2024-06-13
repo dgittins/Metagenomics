@@ -20,6 +20,8 @@ $ ln -s ../fastq/*.fastq.gz .
 \
 3. Run BBDuk on fastq.gz files
 
+When dealing with paired reads in 2 files they should always be processed together, not one at a time. Pairs are always kept together – either both reads are kept, or both are discarded.
+
 **Force-Trim Modulo** - remove very inaccurate, low quality last base ('ftm=5' - read length is equal to zero modulo 5)
 
 ```bash
@@ -59,8 +61,6 @@ do
 
 done
 ```
-
-When dealing with paired reads in 2 files they should always be processed together, not one at a time. Pairs are always kept together – either both reads are kept, or both are discarded.
 
 \
   4. Remove intermediate files to save storage space
