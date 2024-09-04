@@ -9,6 +9,10 @@ Workflow described here: https://github.com/BinPro/CONCOCT
 ```bash
 $ conda create -n concoct -c bioconda concoct
 $ conda activate concoct
+
+# Run python version 2.7 (version 3 fails)
+
+conda install python=2.7
 ```
 
 \
